@@ -13,6 +13,7 @@ namespace MiniPaintWektorowo
         private Int32 szerokosc;
         private List<Figura> figury;
         private Color kolorTla;
+        private Image imageFile = null;
 
         public Rysunek(int szerokosc, int wysokosc, Color kolorTla)
         {
@@ -21,12 +22,22 @@ namespace MiniPaintWektorowo
             this.kolorTla = kolorTla;
             this.figury = new List<Figura>();
         }
+        public Rysunek(int szerokosc, int wysokosc, Image imageFile) {
+            this.szerokosc = szerokosc;
+            this.wysokosc = wysokosc;
+            this.imageFile = imageFile;
+            this.figury = new List<Figura>();
+        }
 
         public void Rysuj(Graphics g)
         {
             if (g != null)
             {
-                g.Clear(kolorTla);
+                if(imageFile != null)
+                    g = Graphics.FromImage(imageFile);
+                else  
+                    g.Clear(kolorTla);
+
                 foreach (Figura f in figury)
                 {
                     f.Rysuj(g);

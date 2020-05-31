@@ -12,6 +12,7 @@ namespace MiniPaintWektorowo
 {
     public partial class OknoProgramu : Form
     {
+        private string imageFileDirectory = null;
         Graphics g;
         Graphics gp;
         List<Point> punktyRobocze = new List<Point>();
@@ -129,6 +130,7 @@ namespace MiniPaintWektorowo
 
         }
 
+        #region file options
         private void cofnijToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rysunek.Usun(g);
@@ -144,9 +146,56 @@ namespace MiniPaintWektorowo
             pictureBoxPodglad.Refresh();
         }
 
+        private void fileSaveMenuItem_Click(object sender, EventArgs e) {
+          if (imageFileDirectory != null)   
+              try{
+                  pictureBoxRamka.Image.Save(imageFileDirectory, System.Drawing.Imaging.ImageFormat.Bmp);
+              }catch{
+                  MessageBox.Show("Error");
+              }
+          else
+              fileSaveAsMenuItem_Click(sender,e);
+        }
+
+        private void fileSaveAsMenuItem_Click(object sender, EventArgs e) {
+          SaveFileDialog saveDlg = new SaveFileDialog();
+          saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
+          if (saveDlg.ShowDialog() == DialogResult.OK) {
+              try{                                                        
+                  pictureBoxRamka.Image.Save(saveDlg.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
+                  imageFileDirectory = saveDlg.FileName;
+              }catch{
+                  MessageBox.Show("Error");
+              }
+          }
+        }
+        private void fileOpenMenuItem_Click(object sender, EventArgs e) {   // TODO zmiana rozmiaru ramki gdy inny
+            OpenFileDialog openDlg = new OpenFileDialog();
+            openDlg.Filter = "Image Files .BMP .JPG .GIF .Png|*.BMP;*.JPG;*.GIF;*.PNG";
+            if (openDlg.ShowDialog() == DialogResult.OK) {
+                try  { 
+                    Image imageFile = Image.FromFile(openDlg.FileName);
+                    pictureBoxRamka.Image = (Bitmap) imageFile;
+                    pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Width, pictureBoxRamka.Height);  
+
+                    rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, imageFile);
+                    rysunek.Rysuj(g);
+                    pictureBoxRamka.Refresh();
+
+                    imageFileDirectory = openDlg.FileName;
+                }catch{
+                    MessageBox.Show("Error");
+                }
+            }else{
+                MessageBox.Show("Error");
+            }
+    }
+
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        #endregion
     }
 }

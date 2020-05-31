@@ -245,6 +245,7 @@
             this.otwórzToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.otwórzToolStripMenuItem.Text = "Otwórz";
+            this.otwórzToolStripMenuItem.Click  += new System.EventHandler(this.fileOpenMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
@@ -252,12 +253,14 @@
             this.zapiszToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
+            this.zapiszToolStripMenuItem.Click  += new System.EventHandler(this.fileSaveMenuItem_Click);
             // 
             // zapiszJakoToolStripMenuItem
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
+            this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";                                                                       
+            this.zapiszJakoToolStripMenuItem.Click  += new System.EventHandler(this.fileSaveAsMenuItem_Click);
             // 
             // zamknijToolStripMenuItem
             // 
