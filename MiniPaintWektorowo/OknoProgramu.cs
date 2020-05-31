@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -161,17 +162,17 @@ namespace MiniPaintWektorowo
         }
 
         private void fileSaveMenuItem_Click(object sender, EventArgs e) {
-          if (imageFileDirectory != null)   
-              pictureBoxRamka.Image.Save(imageFileDirectory);
+            if (imageFileDirectory != null)
+               pictureBoxRamka.Image.Save(imageFileDirectory, System.Drawing.Imaging.ImageFormat.Bmp);
           else
-              fileSaveAsMenuItem_Click(sender,e);
+               fileSaveAsMenuItem_Click(sender, e);
         }
 
         private void fileSaveAsMenuItem_Click(object sender, EventArgs e) {
           SaveFileDialog saveDlg = new SaveFileDialog();
           saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
           if (saveDlg.ShowDialog() == DialogResult.OK) {                                                    
-                pictureBoxRamka.Image.Save(saveDlg.FileName);
+                pictureBoxRamka.Image.Save(saveDlg.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
                 imageFileDirectory = saveDlg.FileName;
           }
         }
@@ -180,16 +181,7 @@ namespace MiniPaintWektorowo
             openDlg.Filter = "Image Files .BMP .JPG .GIF .Png|*.BMP;*.JPG;*.GIF;*.PNG";
             if (openDlg.ShowDialog() == DialogResult.OK) {
 
-                Image imageFile = Image.FromFile(openDlg.FileName);
-
-                pictureBoxRamka.Size = imageFile.Size;
-                pictureBoxPodglad.Size = pictureBoxRamka.Size;
-
-                pictureBoxRamka.Image = (Bitmap) imageFile;
-                pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Image);
-
-                rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, imageFile);
-                rysunek.Rysuj(g);
+                noweTlo(Image.FromFile(openDlg.FileName));
 
                 imageFileDirectory = openDlg.FileName;
                 
@@ -219,6 +211,24 @@ namespace MiniPaintWektorowo
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(pictureBoxRamka.Image, 0, 0);
+        }
+
+        private void obróćToolStripMenuItem_Click(object sender, EventArgs e) {
+            Image image = pictureBoxRamka.Image;
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            noweTlo(image);
+
+        }
+
+        private void noweTlo(Image image) {
+
+            pictureBoxRamka.Image = new Bitmap(image);
+            pictureBoxPodglad.Image = new Bitmap(image);
+
+            g = Graphics.FromImage(pictureBoxRamka.Image);
+            rysunek = new Rysunek(image);
+            rysunek.Rysuj(g);
+            pictureBoxRamka.Refresh();
         }
     }
 }
