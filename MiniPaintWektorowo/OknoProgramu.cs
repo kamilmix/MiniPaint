@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -203,5 +204,21 @@ namespace MiniPaintWektorowo
         }
 
         #endregion
+
+        private void drukujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintDocument myPrintDocument1 = new PrintDocument();
+            myPrintDocument1.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                myPrintDocument1.Print();
+            }
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(pictureBoxRamka.Image, 0, 0);
+        }
     }
 }
