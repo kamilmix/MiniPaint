@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MojeKlasy\FiguraNiewypelniona.cs" />
+    <Compile Include="MojeKlasy\Gumka.cs" />
     <Compile Include="MojeKlasy\Krzywa.cs" />
     <Compile Include="MojeKlasy\Elipsa.cs" />
     <Compile Include="MojeKlasy\Prostokat.cs" />
@@ -87,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\eraser.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

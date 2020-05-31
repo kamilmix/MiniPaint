@@ -55,17 +55,20 @@
             this.wklejToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
+            this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPodglad)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 174);
+            this.label1.Location = new System.Drawing.Point(9, 225);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 7;
@@ -74,7 +77,7 @@
             // buttonKolorLinii
             // 
             this.buttonKolorLinii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.buttonKolorLinii.Location = new System.Drawing.Point(79, 174);
+            this.buttonKolorLinii.Location = new System.Drawing.Point(79, 225);
             this.buttonKolorLinii.Name = "buttonKolorLinii";
             this.buttonKolorLinii.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorLinii.TabIndex = 6;
@@ -83,13 +86,14 @@
             // 
             // groupBoxKsztalt
             // 
+            this.groupBoxKsztalt.Controls.Add(this.radioButtonGumka);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonElipsa);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonProstokat);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonProsta);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKrzywa);
             this.groupBoxKsztalt.Location = new System.Drawing.Point(12, 27);
             this.groupBoxKsztalt.Name = "groupBoxKsztalt";
-            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 118);
+            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 155);
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
@@ -150,7 +154,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 203);
+            this.label2.Location = new System.Drawing.Point(9, 254);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 9;
@@ -159,7 +163,7 @@
             // buttonKolorWypelnienia
             // 
             this.buttonKolorWypelnienia.BackColor = System.Drawing.Color.Yellow;
-            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(79, 203);
+            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(79, 254);
             this.buttonKolorWypelnienia.Name = "buttonKolorWypelnienia";
             this.buttonKolorWypelnienia.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorWypelnienia.TabIndex = 8;
@@ -169,7 +173,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 148);
+            this.label3.Location = new System.Drawing.Point(9, 199);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 10;
@@ -177,7 +181,7 @@
             // 
             // numericUpDownGruboscLinii
             // 
-            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(79, 148);
+            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(79, 199);
             this.numericUpDownGruboscLinii.Maximum = new decimal(new int[] {
             20,
             0,
@@ -313,11 +317,30 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelCursorPosition});
             this.statusStrip1.Location = new System.Drawing.Point(0, 390);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(619, 22);
             this.statusStrip1.TabIndex = 14;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelCursorPosition
+            // 
+            this.toolStripStatusLabelCursorPosition.Name = "toolStripStatusLabelCursorPosition";
+            this.toolStripStatusLabelCursorPosition.Size = new System.Drawing.Size(48, 17);
+            this.toolStripStatusLabelCursorPosition.Text = "X: 0 Y: 0";
+            // 
+            // radioButtonGumka
+            // 
+            this.radioButtonGumka.AutoSize = true;
+            this.radioButtonGumka.Location = new System.Drawing.Point(8, 112);
+            this.radioButtonGumka.Name = "radioButtonGumka";
+            this.radioButtonGumka.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonGumka.TabIndex = 4;
+            this.radioButtonGumka.TabStop = true;
+            this.radioButtonGumka.Text = "Gumka";
+            this.radioButtonGumka.UseVisualStyleBackColor = true;
             // 
             // OknoProgramu
             // 
@@ -345,6 +368,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPodglad)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,6 +404,8 @@
         private System.Windows.Forms.ToolStripMenuItem cofnijToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBoxPodglad;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCursorPosition;
+        private System.Windows.Forms.RadioButton radioButtonGumka;
     }
 }
 

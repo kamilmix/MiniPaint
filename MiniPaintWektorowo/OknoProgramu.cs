@@ -29,6 +29,8 @@ namespace MiniPaintWektorowo
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
             rysunek.Rysuj(g);
             pictureBoxRamka.Refresh();
+
+           
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -42,6 +44,8 @@ namespace MiniPaintWektorowo
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            toolStripStatusLabelCursorPosition.Text = $"X: {e.X} Y: {e.Y}";
+
             if (e.Button == MouseButtons.Left)
             {
                 punktyRobocze.Add(e.Location);
@@ -66,6 +70,11 @@ namespace MiniPaintWektorowo
                 {
                     figura = new Elipsa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last());
                 }
+                else if (radioButtonGumka.Checked)
+                {
+                    figura = new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze);
+                }
+
                 figura.Rysuj(gp);
                 pictureBoxPodglad.Refresh();
 
@@ -98,6 +107,10 @@ namespace MiniPaintWektorowo
                 else if (radioButtonElipsa.Checked)
                 {
                     rysunek.Dodaj(new Elipsa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last()));
+                }
+                else if (radioButtonGumka.Checked)
+                {
+                    rysunek.Dodaj(new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze));
                 }
 
                 rysunek.Rysuj(g);
