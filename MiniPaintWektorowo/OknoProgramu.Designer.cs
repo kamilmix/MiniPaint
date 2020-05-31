@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKolorLinii = new System.Windows.Forms.Button();
             this.groupBoxKsztalt = new System.Windows.Forms.GroupBox();
+            this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.radioButtonElipsa = new System.Windows.Forms.RadioButton();
             this.radioButtonProstokat = new System.Windows.Forms.RadioButton();
             this.radioButtonProsta = new System.Windows.Forms.RadioButton();
@@ -56,7 +57,6 @@
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
-            this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -97,6 +97,17 @@
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
+            // 
+            // radioButtonGumka
+            // 
+            this.radioButtonGumka.AutoSize = true;
+            this.radioButtonGumka.Location = new System.Drawing.Point(8, 112);
+            this.radioButtonGumka.Name = "radioButtonGumka";
+            this.radioButtonGumka.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonGumka.TabIndex = 4;
+            this.radioButtonGumka.TabStop = true;
+            this.radioButtonGumka.Text = "Gumka";
+            this.radioButtonGumka.UseVisualStyleBackColor = true;
             // 
             // radioButtonElipsa
             // 
@@ -238,7 +249,7 @@
             this.otwórzToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.otwórzToolStripMenuItem.Text = "Otwórz";
-            this.otwórzToolStripMenuItem.Click  += new System.EventHandler(this.fileOpenMenuItem_Click);
+            this.otwórzToolStripMenuItem.Click += new System.EventHandler(this.fileOpenMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
@@ -246,7 +257,7 @@
             this.zapiszToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
-            this.zapiszToolStripMenuItem.Click  += new System.EventHandler(this.fileSaveMenuItem_Click);
+            this.zapiszToolStripMenuItem.Click += new System.EventHandler(this.fileSaveMenuItem_Click);
             // 
             // zapiszJakoToolStripMenuItem
             // 
@@ -312,6 +323,7 @@
             this.pictureBoxPodglad.Location = new System.Drawing.Point(117, 27);
             this.pictureBoxPodglad.Name = "pictureBoxPodglad";
             this.pictureBoxPodglad.Size = new System.Drawing.Size(451, 251);
+            this.pictureBoxPodglad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxPodglad.TabIndex = 12;
             this.pictureBoxPodglad.TabStop = false;
             this.pictureBoxPodglad.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
@@ -333,17 +345,6 @@
             this.toolStripStatusLabelCursorPosition.Name = "toolStripStatusLabelCursorPosition";
             this.toolStripStatusLabelCursorPosition.Size = new System.Drawing.Size(48, 17);
             this.toolStripStatusLabelCursorPosition.Text = "X: 0 Y: 0";
-            // 
-            // radioButtonGumka
-            // 
-            this.radioButtonGumka.AutoSize = true;
-            this.radioButtonGumka.Location = new System.Drawing.Point(8, 112);
-            this.radioButtonGumka.Name = "radioButtonGumka";
-            this.radioButtonGumka.Size = new System.Drawing.Size(59, 17);
-            this.radioButtonGumka.TabIndex = 4;
-            this.radioButtonGumka.TabStop = true;
-            this.radioButtonGumka.Text = "Gumka";
-            this.radioButtonGumka.UseVisualStyleBackColor = true;
             // 
             // OknoProgramu
             // 

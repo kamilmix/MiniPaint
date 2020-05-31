@@ -161,11 +161,7 @@ namespace MiniPaintWektorowo
 
         private void fileSaveMenuItem_Click(object sender, EventArgs e) {
           if (imageFileDirectory != null)   
-              try{
-                  pictureBoxRamka.Image.Save(imageFileDirectory, System.Drawing.Imaging.ImageFormat.Bmp);
-              }catch{
-                  MessageBox.Show("Error");
-              }
+              pictureBoxRamka.Image.Save(imageFileDirectory);
           else
               fileSaveAsMenuItem_Click(sender,e);
         }
@@ -173,32 +169,29 @@ namespace MiniPaintWektorowo
         private void fileSaveAsMenuItem_Click(object sender, EventArgs e) {
           SaveFileDialog saveDlg = new SaveFileDialog();
           saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
-          if (saveDlg.ShowDialog() == DialogResult.OK) {
-              try{                                                        
-                  pictureBoxRamka.Image.Save(saveDlg.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
-                  imageFileDirectory = saveDlg.FileName;
-              }catch{
-                  MessageBox.Show("Error");
-              }
+          if (saveDlg.ShowDialog() == DialogResult.OK) {                                                    
+                pictureBoxRamka.Image.Save(saveDlg.FileName);
+                imageFileDirectory = saveDlg.FileName;
           }
         }
-        private void fileOpenMenuItem_Click(object sender, EventArgs e) {   // TODO zmiana rozmiaru ramki gdy inny
+        private void fileOpenMenuItem_Click(object sender, EventArgs e) { 
             OpenFileDialog openDlg = new OpenFileDialog();
             openDlg.Filter = "Image Files .BMP .JPG .GIF .Png|*.BMP;*.JPG;*.GIF;*.PNG";
             if (openDlg.ShowDialog() == DialogResult.OK) {
-                try  { 
-                    Image imageFile = Image.FromFile(openDlg.FileName);
-                    pictureBoxRamka.Image = (Bitmap) imageFile;
-                    pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Width, pictureBoxRamka.Height);  
 
-                    rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, imageFile);
-                    rysunek.Rysuj(g);
-                    pictureBoxRamka.Refresh();
+                Image imageFile = Image.FromFile(openDlg.FileName);
 
-                    imageFileDirectory = openDlg.FileName;
-                }catch{
-                    MessageBox.Show("Error");
-                }
+                pictureBoxRamka.Size = imageFile.Size;
+                pictureBoxPodglad.Size = pictureBoxRamka.Size;
+
+                pictureBoxRamka.Image = (Bitmap) imageFile;
+                pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Image);
+
+                rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, imageFile);
+                rysunek.Rysuj(g);
+
+                imageFileDirectory = openDlg.FileName;
+                
             }else{
                 MessageBox.Show("Error");
             }
