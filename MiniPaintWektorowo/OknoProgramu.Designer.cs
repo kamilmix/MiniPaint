@@ -323,7 +323,7 @@
             this.obróćToolStripMenuItem.Name = "obróćToolStripMenuItem";
             this.obróćToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.obróćToolStripMenuItem.Text = "Obróć";
-            this.obróćToolStripMenuItem.Click += new System.EventHandler(this.obróćToolStripMenuItem_Click);
+            this.obróćToolStripMenuItem.Click += new System.EventHandler(this.obrocToolStripMenuItem_Click);
             // 
             // kopiujToolStripMenuItem
             // 

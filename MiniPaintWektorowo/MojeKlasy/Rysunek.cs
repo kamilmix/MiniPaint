@@ -36,9 +36,8 @@ namespace MiniPaintWektorowo
         {
             if (g != null)
             {
-                if (imageFile == null)
+                if (imageFile == null) 
                     g.Clear(kolorTla);
-                }
 
                 foreach (Figura f in figury)
                 {
