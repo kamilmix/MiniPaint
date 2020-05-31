@@ -23,8 +23,8 @@ namespace MiniPaintWektorowo
             pictureBoxPodglad.Image = new Bitmap(pictureBoxPodglad.Width, pictureBoxPodglad.Height);
             pictureBoxPodglad.BackColor = Color.White;
             g = Graphics.FromImage(pictureBoxRamka.Image);
-          
-            
+
+
 
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
             rysunek.Rysuj(g);
@@ -33,10 +33,10 @@ namespace MiniPaintWektorowo
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button ==  MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 punktyRobocze.Clear();
-                punktyRobocze.Add( e.Location);
+                punktyRobocze.Add(e.Location);
             }
         }
 
@@ -51,21 +51,21 @@ namespace MiniPaintWektorowo
                 gp = Graphics.FromImage(pictureBoxPodglad.Image);
 
                 if (radioButtonProsta.Checked)
-                                {
-                                     figura = new Linia(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), punktyRobocze.Last());
-                                }
-                                else if (radioButtonKrzywa.Checked)
-                                {
-                                     figura = new Krzywa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze);
-                                }
-                                else if (radioButtonProstokat.Checked)
-                                {
-                                    figura = new Prostokat(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last());
-                                }
-                                else if (radioButtonElipsa.Checked)
-                                {
-                                    figura = new Elipsa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last());
-                                }
+                {
+                    figura = new Linia(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), punktyRobocze.Last());
+                }
+                else if (radioButtonKrzywa.Checked)
+                {
+                    figura = new Krzywa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze);
+                }
+                else if (radioButtonProstokat.Checked)
+                {
+                    figura = new Prostokat(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last());
+                }
+                else if (radioButtonElipsa.Checked)
+                {
+                    figura = new Elipsa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, buttonKolorWypelnienia.BackColor, punktyRobocze.First(), punktyRobocze.Last());
+                }
                 figura.Rysuj(gp);
                 pictureBoxPodglad.Refresh();
 
@@ -74,20 +74,20 @@ namespace MiniPaintWektorowo
 
         }
 
-       
+
 
         private void pictureBoxRamka_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button==MouseButtons.Left)
-            { 
+            if (e.Button == MouseButtons.Left)
+            {
                 punktyRobocze.Add(e.Location);
-              
 
-                if(radioButtonProsta.Checked)
-                { 
-                    rysunek.Dodaj(new Linia(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value , punktyRobocze.First(), punktyRobocze.Last()));
+
+                if (radioButtonProsta.Checked)
+                {
+                    rysunek.Dodaj(new Linia(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), punktyRobocze.Last()));
                 }
-                else if(radioButtonKrzywa.Checked)
+                else if (radioButtonKrzywa.Checked)
                 {
                     rysunek.Dodaj(new Krzywa(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze));
                 }
@@ -119,7 +119,7 @@ namespace MiniPaintWektorowo
         {
             ColorDialog kolorOkno = new ColorDialog();
             if (kolorOkno.ShowDialog() == DialogResult.OK)
-            { 
+            {
                 buttonKolorWypelnienia.BackColor = kolorOkno.Color;
             }
         }
