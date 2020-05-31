@@ -48,6 +48,7 @@
             this.otwórzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drukujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cofnijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,9 +59,9 @@
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
-            this.drukujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.ponówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -268,6 +269,13 @@
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.fileSaveAsMenuItem_Click);
             // 
+            // drukujToolStripMenuItem
+            // 
+            this.drukujToolStripMenuItem.Name = "drukujToolStripMenuItem";
+            this.drukujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.drukujToolStripMenuItem.Text = "Drukuj...";
+            this.drukujToolStripMenuItem.Click += new System.EventHandler(this.drukujToolStripMenuItem_Click);
+            // 
             // zamknijToolStripMenuItem
             // 
             this.zamknijToolStripMenuItem.Name = "zamknijToolStripMenuItem";
@@ -279,6 +287,7 @@
             // 
             this.edycjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cofnijToolStripMenuItem,
+            this.ponówToolStripMenuItem,
             this.obróćToolStripMenuItem,
             this.kopiujToolStripMenuItem,
             this.wytnijToolStripMenuItem,
@@ -291,32 +300,32 @@
             // 
             this.cofnijToolStripMenuItem.Name = "cofnijToolStripMenuItem";
             this.cofnijToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.cofnijToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cofnijToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.cofnijToolStripMenuItem.Text = "Cofnij";
             this.cofnijToolStripMenuItem.Click += new System.EventHandler(this.cofnijToolStripMenuItem_Click);
             // 
             // obróćToolStripMenuItem
             // 
             this.obróćToolStripMenuItem.Name = "obróćToolStripMenuItem";
-            this.obróćToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.obróćToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.obróćToolStripMenuItem.Text = "Obróć";
             // 
             // kopiujToolStripMenuItem
             // 
             this.kopiujToolStripMenuItem.Name = "kopiujToolStripMenuItem";
-            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.kopiujToolStripMenuItem.Text = "Kopiuj";
             // 
             // wytnijToolStripMenuItem
             // 
             this.wytnijToolStripMenuItem.Name = "wytnijToolStripMenuItem";
-            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wytnijToolStripMenuItem.Text = "Wytnij";
             // 
             // wklejToolStripMenuItem
             // 
             this.wklejToolStripMenuItem.Name = "wklejToolStripMenuItem";
-            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
             // 
             // pictureBoxPodglad
@@ -347,13 +356,6 @@
             this.toolStripStatusLabelCursorPosition.Size = new System.Drawing.Size(48, 17);
             this.toolStripStatusLabelCursorPosition.Text = "X: 0 Y: 0";
             // 
-            // drukujToolStripMenuItem
-            // 
-            this.drukujToolStripMenuItem.Name = "drukujToolStripMenuItem";
-            this.drukujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.drukujToolStripMenuItem.Text = "Drukuj...";
-            this.drukujToolStripMenuItem.Click += new System.EventHandler(this.drukujToolStripMenuItem_Click);
-            // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
@@ -367,6 +369,15 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
+            // 
+            // ponówToolStripMenuItem
+            // 
+            this.ponówToolStripMenuItem.Name = "ponówToolStripMenuItem";
+            this.ponówToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.ponówToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.ponówToolStripMenuItem.Text = "Ponów";
+            this.ponówToolStripMenuItem.Click += new System.EventHandler(this.ponówToolStripMenuItem_Click);
             // 
             // OknoProgramu
             // 
@@ -435,6 +446,7 @@
         private System.Windows.Forms.ToolStripMenuItem drukujToolStripMenuItem;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ToolStripMenuItem ponówToolStripMenuItem;
     }
 }
 

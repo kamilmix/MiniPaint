@@ -152,6 +152,13 @@ namespace MiniPaintWektorowo
             pictureBoxPodglad.Refresh();
         }
 
+        private void ponówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rysunek.Ponow(g);
+            rysunek.Rysuj(gp);
+            pictureBoxPodglad.Refresh();
+        }
+
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
