@@ -334,6 +334,7 @@
             this.pictureBoxPodglad.Location = new System.Drawing.Point(117, 27);
             this.pictureBoxPodglad.Name = "pictureBoxPodglad";
             this.pictureBoxPodglad.Size = new System.Drawing.Size(451, 251);
+            this.pictureBoxPodglad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxPodglad.TabIndex = 12;
             this.pictureBoxPodglad.TabStop = false;
             this.pictureBoxPodglad.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
