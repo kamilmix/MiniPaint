@@ -227,5 +227,11 @@ namespace MiniPaintWektorowo
         {
             e.Graphics.DrawImage(pictureBoxRamka.Image, 0, 0);
         }
+
+        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 AboutMe = new AboutBox1();
+            AboutMe.Show();
+        }
     }
 }

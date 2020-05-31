@@ -52,6 +52,7 @@
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edycjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cofnijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ponówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obróćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kopiujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wytnijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,9 @@
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.ponówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioButtonWiadro = new System.Windows.Forms.RadioButton();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -91,6 +94,7 @@
             // 
             // groupBoxKsztalt
             // 
+            this.groupBoxKsztalt.Controls.Add(this.radioButtonWiadro);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonGumka);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonElipsa);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonProstokat);
@@ -98,7 +102,7 @@
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKrzywa);
             this.groupBoxKsztalt.Location = new System.Drawing.Point(12, 27);
             this.groupBoxKsztalt.Name = "groupBoxKsztalt";
-            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 155);
+            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 166);
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
@@ -218,7 +222,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
-            this.edycjaToolStripMenuItem});
+            this.edycjaToolStripMenuItem,
+            this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(619, 24);
@@ -266,7 +271,7 @@
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
+            this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako...";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.fileSaveAsMenuItem_Click);
             // 
             // drukujToolStripMenuItem
@@ -303,6 +308,15 @@
             this.cofnijToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.cofnijToolStripMenuItem.Text = "Cofnij";
             this.cofnijToolStripMenuItem.Click += new System.EventHandler(this.cofnijToolStripMenuItem_Click);
+            // 
+            // ponówToolStripMenuItem
+            // 
+            this.ponówToolStripMenuItem.Name = "ponówToolStripMenuItem";
+            this.ponówToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.ponówToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.ponówToolStripMenuItem.Text = "Ponów";
+            this.ponówToolStripMenuItem.Click += new System.EventHandler(this.ponówToolStripMenuItem_Click);
             // 
             // obróćToolStripMenuItem
             // 
@@ -371,14 +385,31 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // ponówToolStripMenuItem
+            // pomocToolStripMenuItem
             // 
-            this.ponówToolStripMenuItem.Name = "ponówToolStripMenuItem";
-            this.ponówToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Z)));
-            this.ponówToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.ponówToolStripMenuItem.Text = "Ponów";
-            this.ponówToolStripMenuItem.Click += new System.EventHandler(this.ponówToolStripMenuItem_Click);
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oProgramieToolStripMenuItem});
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "Pomoc";
+            // 
+            // oProgramieToolStripMenuItem
+            // 
+            this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
+            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oProgramieToolStripMenuItem.Text = "O programie";
+            this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
+            // 
+            // radioButtonWiadro
+            // 
+            this.radioButtonWiadro.AutoSize = true;
+            this.radioButtonWiadro.Location = new System.Drawing.Point(8, 135);
+            this.radioButtonWiadro.Name = "radioButtonWiadro";
+            this.radioButtonWiadro.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonWiadro.TabIndex = 5;
+            this.radioButtonWiadro.TabStop = true;
+            this.radioButtonWiadro.Text = "Wiadro";
+            this.radioButtonWiadro.UseVisualStyleBackColor = true;
             // 
             // OknoProgramu
             // 
@@ -448,6 +479,9 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.ToolStripMenuItem ponówToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonWiadro;
     }
 }
 
