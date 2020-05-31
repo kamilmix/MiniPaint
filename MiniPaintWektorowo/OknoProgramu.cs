@@ -153,6 +153,13 @@ namespace MiniPaintWektorowo
             pictureBoxPodglad.Refresh();
         }
 
+        private void ponówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rysunek.Ponow(g);
+            rysunek.Rysuj(gp);
+            pictureBoxPodglad.Refresh();
+        }
+
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
@@ -213,7 +220,7 @@ namespace MiniPaintWektorowo
             e.Graphics.DrawImage(pictureBoxRamka.Image, 0, 0);
         }
 
-        private void obróćToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void obrocToolStripMenuItem_Click(object sender, EventArgs e) {
             Image image = pictureBoxRamka.Image;
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             noweTlo(image);
@@ -229,6 +236,10 @@ namespace MiniPaintWektorowo
             rysunek = new Rysunek(image);
             rysunek.Rysuj(g);
             pictureBoxRamka.Refresh();
+        }
+        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e) {
+            AboutBox1 AboutMe = new AboutBox1();
+            AboutMe.Show();
         }
     }
 }
