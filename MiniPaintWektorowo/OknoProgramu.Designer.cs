@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OknoProgramu));
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKolorLinii = new System.Windows.Forms.Button();
             this.groupBoxKsztalt = new System.Windows.Forms.GroupBox();
+            this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.radioButtonElipsa = new System.Windows.Forms.RadioButton();
             this.radioButtonProstokat = new System.Windows.Forms.RadioButton();
             this.radioButtonProsta = new System.Windows.Forms.RadioButton();
@@ -56,7 +58,9 @@
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
-            this.radioButtonGumka = new System.Windows.Forms.RadioButton();
+            this.drukujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -98,6 +102,16 @@
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
             // 
+            // radioButtonGumka
+            // 
+            this.radioButtonGumka.AutoSize = true;
+            this.radioButtonGumka.Location = new System.Drawing.Point(8, 112);
+            this.radioButtonGumka.Name = "radioButtonGumka";
+            this.radioButtonGumka.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonGumka.TabIndex = 4;
+            this.radioButtonGumka.Text = "Gumka";
+            this.radioButtonGumka.UseVisualStyleBackColor = true;
+            // 
             // radioButtonElipsa
             // 
             this.radioButtonElipsa.AutoSize = true;
@@ -105,7 +119,6 @@
             this.radioButtonElipsa.Name = "radioButtonElipsa";
             this.radioButtonElipsa.Size = new System.Drawing.Size(53, 17);
             this.radioButtonElipsa.TabIndex = 3;
-            this.radioButtonElipsa.TabStop = true;
             this.radioButtonElipsa.Text = "Elipsa";
             this.radioButtonElipsa.UseVisualStyleBackColor = true;
             // 
@@ -116,7 +129,6 @@
             this.radioButtonProstokat.Name = "radioButtonProstokat";
             this.radioButtonProstokat.Size = new System.Drawing.Size(70, 17);
             this.radioButtonProstokat.TabIndex = 2;
-            this.radioButtonProstokat.TabStop = true;
             this.radioButtonProstokat.Text = "Prostokąt";
             this.radioButtonProstokat.UseVisualStyleBackColor = true;
             // 
@@ -127,13 +139,13 @@
             this.radioButtonProsta.Name = "radioButtonProsta";
             this.radioButtonProsta.Size = new System.Drawing.Size(55, 17);
             this.radioButtonProsta.TabIndex = 1;
-            this.radioButtonProsta.TabStop = true;
             this.radioButtonProsta.Text = "Prosta";
             this.radioButtonProsta.UseVisualStyleBackColor = true;
             // 
             // radioButtonKrzywa
             // 
             this.radioButtonKrzywa.AutoSize = true;
+            this.radioButtonKrzywa.Checked = true;
             this.radioButtonKrzywa.Location = new System.Drawing.Point(8, 20);
             this.radioButtonKrzywa.Name = "radioButtonKrzywa";
             this.radioButtonKrzywa.Size = new System.Drawing.Size(59, 17);
@@ -219,6 +231,7 @@
             this.otwórzToolStripMenuItem,
             this.zapiszToolStripMenuItem,
             this.zapiszJakoToolStripMenuItem,
+            this.drukujToolStripMenuItem,
             this.zamknijToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
@@ -228,7 +241,7 @@
             // 
             this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
             this.nowyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nowyToolStripMenuItem.Text = "Nowy";
             this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
             // 
@@ -236,29 +249,29 @@
             // 
             this.otwórzToolStripMenuItem.Name = "otwórzToolStripMenuItem";
             this.otwórzToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.otwórzToolStripMenuItem.Text = "Otwórz";
-            this.otwórzToolStripMenuItem.Click  += new System.EventHandler(this.fileOpenMenuItem_Click);
+            this.otwórzToolStripMenuItem.Click += new System.EventHandler(this.fileOpenMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
             this.zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
             this.zapiszToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
-            this.zapiszToolStripMenuItem.Click  += new System.EventHandler(this.fileSaveMenuItem_Click);
+            this.zapiszToolStripMenuItem.Click += new System.EventHandler(this.fileSaveMenuItem_Click);
             // 
             // zapiszJakoToolStripMenuItem
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
-            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.fileSaveAsMenuItem_Click);
             // 
             // zamknijToolStripMenuItem
             // 
             this.zamknijToolStripMenuItem.Name = "zamknijToolStripMenuItem";
-            this.zamknijToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zamknijToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zamknijToolStripMenuItem.Text = "Zamknij";
             this.zamknijToolStripMenuItem.Click += new System.EventHandler(this.zamknijToolStripMenuItem_Click);
             // 
@@ -278,32 +291,32 @@
             // 
             this.cofnijToolStripMenuItem.Name = "cofnijToolStripMenuItem";
             this.cofnijToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.cofnijToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.cofnijToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cofnijToolStripMenuItem.Text = "Cofnij";
             this.cofnijToolStripMenuItem.Click += new System.EventHandler(this.cofnijToolStripMenuItem_Click);
             // 
             // obróćToolStripMenuItem
             // 
             this.obróćToolStripMenuItem.Name = "obróćToolStripMenuItem";
-            this.obróćToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.obróćToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.obróćToolStripMenuItem.Text = "Obróć";
             // 
             // kopiujToolStripMenuItem
             // 
             this.kopiujToolStripMenuItem.Name = "kopiujToolStripMenuItem";
-            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kopiujToolStripMenuItem.Text = "Kopiuj";
             // 
             // wytnijToolStripMenuItem
             // 
             this.wytnijToolStripMenuItem.Name = "wytnijToolStripMenuItem";
-            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wytnijToolStripMenuItem.Text = "Wytnij";
             // 
             // wklejToolStripMenuItem
             // 
             this.wklejToolStripMenuItem.Name = "wklejToolStripMenuItem";
-            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.wklejToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
             // 
             // pictureBoxPodglad
@@ -334,16 +347,26 @@
             this.toolStripStatusLabelCursorPosition.Size = new System.Drawing.Size(48, 17);
             this.toolStripStatusLabelCursorPosition.Text = "X: 0 Y: 0";
             // 
-            // radioButtonGumka
+            // drukujToolStripMenuItem
             // 
-            this.radioButtonGumka.AutoSize = true;
-            this.radioButtonGumka.Location = new System.Drawing.Point(8, 112);
-            this.radioButtonGumka.Name = "radioButtonGumka";
-            this.radioButtonGumka.Size = new System.Drawing.Size(59, 17);
-            this.radioButtonGumka.TabIndex = 4;
-            this.radioButtonGumka.TabStop = true;
-            this.radioButtonGumka.Text = "Gumka";
-            this.radioButtonGumka.UseVisualStyleBackColor = true;
+            this.drukujToolStripMenuItem.Name = "drukujToolStripMenuItem";
+            this.drukujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.drukujToolStripMenuItem.Text = "Drukuj...";
+            this.drukujToolStripMenuItem.Click += new System.EventHandler(this.drukujToolStripMenuItem_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // OknoProgramu
             // 
@@ -409,6 +432,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCursorPosition;
         private System.Windows.Forms.RadioButton radioButtonGumka;
+        private System.Windows.Forms.ToolStripMenuItem drukujToolStripMenuItem;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
 
