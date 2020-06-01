@@ -62,6 +62,12 @@
     <Compile Include="MojeKlasy\Figura.cs" />
     <Compile Include="MojeKlasy\Tekst.cs" />
     <Compile Include="MojeKlasy\Wiadro.cs" />
+    <Compile Include="NewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDialog.Designer.cs">
+      <DependentUpon>NewDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="OknoProgramu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="MojeKlasy\Rysunek.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewDialog.resx">
+      <DependentUpon>NewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OknoProgramu.resx">
       <DependentUpon>OknoProgramu.cs</DependentUpon>

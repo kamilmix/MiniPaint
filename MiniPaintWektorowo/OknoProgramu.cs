@@ -190,10 +190,22 @@ namespace MiniPaintWektorowo
 
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
-            rysunek.Rysuj(g);
-            rysunek.Rysuj(gp);
-            pictureBoxPodglad.Refresh();
+            NewDialog dialog = new NewDialog();
+
+            if (dialog.ShowDialog(this) == DialogResult.OK) {
+                bazowyRozmiar = dialog.ImageSize;
+                pictureBoxRamka.Image = new Bitmap(bazowyRozmiar.Width, bazowyRozmiar.Height);
+                pictureBoxPodglad.Image = new Bitmap(bazowyRozmiar.Width, bazowyRozmiar.Height);
+                g = Graphics.FromImage(pictureBoxRamka.Image);
+                gp = Graphics.FromImage(pictureBoxPodglad.Image);
+
+                rysunek = new Rysunek(bazowyRozmiar.Width, bazowyRozmiar.Height, dialog.imageBackColor);
+                rysunek.Rysuj(g);
+                rysunek.Rysuj(gp);
+                pictureBoxRamka.Refresh();
+                pictureBoxPodglad.Refresh();
+                Text = "MiniPaint wektorowy - niezapisane*";
+            }
         }
 
         private void fileSaveMenuItem_Click(object sender, EventArgs e) {
@@ -208,6 +220,7 @@ namespace MiniPaintWektorowo
           saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
           if (saveDlg.ShowDialog() == DialogResult.OK) {                                                    
                 pictureBoxRamka.Image.Save(saveDlg.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
+                Text = "MiniPaint wektorowy - " + System.IO.Path.GetFileName(saveDlg.FileName);
                 imageFileDirectory = saveDlg.FileName;
           }
         }
@@ -219,6 +232,8 @@ namespace MiniPaintWektorowo
                 using (FileStream stream = new FileStream(openDlg.FileName, FileMode.Open)) {
                     noweTlo(Image.FromStream(stream));
                 }
+
+                Text = "MiniPaint wektorowy - " + openDlg.SafeFileName;
                 bazowyRozmiar = pictureBoxRamka.Size;
                 skala = 1.0f;
                 imageFileDirectory = openDlg.FileName;
