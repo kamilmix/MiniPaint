@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,7 +189,9 @@ namespace MiniPaintWektorowo
             openDlg.Filter = "Image Files .BMP .JPG .GIF .Png|*.BMP;*.JPG;*.GIF;*.PNG";
             if (openDlg.ShowDialog() == DialogResult.OK) {
 
-                noweTlo(Image.FromFile(openDlg.FileName));
+                using (FileStream stream = new FileStream(openDlg.FileName, FileMode.Open)) {
+                    noweTlo(Image.FromStream(stream));
+                }
 
                 imageFileDirectory = openDlg.FileName;
                 
