@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKolorLinii = new System.Windows.Forms.Button();
             this.groupBoxKsztalt = new System.Windows.Forms.GroupBox();
+            this.radioButtonWiadro = new System.Windows.Forms.RadioButton();
             this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.radioButtonElipsa = new System.Windows.Forms.RadioButton();
             this.radioButtonProstokat = new System.Windows.Forms.RadioButton();
@@ -57,14 +58,15 @@
             this.kopiujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wytnijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wklejToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.radioButtonWiadro = new System.Windows.Forms.RadioButton();
+            this.powiekszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomniejszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -106,6 +108,17 @@
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
+            // 
+            // radioButtonWiadro
+            // 
+            this.radioButtonWiadro.AutoSize = true;
+            this.radioButtonWiadro.Location = new System.Drawing.Point(8, 135);
+            this.radioButtonWiadro.Name = "radioButtonWiadro";
+            this.radioButtonWiadro.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonWiadro.TabIndex = 5;
+            this.radioButtonWiadro.TabStop = true;
+            this.radioButtonWiadro.Text = "Wiadro";
+            this.radioButtonWiadro.UseVisualStyleBackColor = true;
             // 
             // radioButtonGumka
             // 
@@ -223,7 +236,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
             this.edycjaToolStripMenuItem,
-            this.pomocToolStripMenuItem});
+            this.pomocToolStripMenuItem,
+            this.powiekszToolStripMenuItem,
+            this.pomniejszToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(619, 24);
@@ -270,14 +285,14 @@
             // zapiszJakoToolStripMenuItem
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
-            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako...";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.fileSaveAsMenuItem_Click);
             // 
             // drukujToolStripMenuItem
             // 
             this.drukujToolStripMenuItem.Name = "drukujToolStripMenuItem";
-            this.drukujToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.drukujToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.drukujToolStripMenuItem.Text = "Drukuj...";
             this.drukujToolStripMenuItem.Click += new System.EventHandler(this.drukujToolStripMenuItem_Click);
             // 
@@ -343,6 +358,21 @@
             this.wklejToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
             // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oProgramieToolStripMenuItem});
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "Pomoc";
+            // 
+            // oProgramieToolStripMenuItem
+            // 
+            this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
+            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.oProgramieToolStripMenuItem.Text = "O programie";
+            this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
+            // 
             // pictureBoxPodglad
             // 
             this.pictureBoxPodglad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -386,31 +416,19 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // pomocToolStripMenuItem
+            // powiekszToolStripMenuItem
             // 
-            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oProgramieToolStripMenuItem});
-            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
+            this.powiekszToolStripMenuItem.Name = "powiekszToolStripMenuItem";
+            this.powiekszToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.powiekszToolStripMenuItem.Text = "powieksz";
+            this.powiekszToolStripMenuItem.Click += new System.EventHandler(this.powiekszToolStripMenuItem_Click);
             // 
-            // oProgramieToolStripMenuItem
+            // pomniejszToolStripMenuItem
             // 
-            this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.oProgramieToolStripMenuItem.Text = "O programie";
-            this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
-            // 
-            // radioButtonWiadro
-            // 
-            this.radioButtonWiadro.AutoSize = true;
-            this.radioButtonWiadro.Location = new System.Drawing.Point(8, 135);
-            this.radioButtonWiadro.Name = "radioButtonWiadro";
-            this.radioButtonWiadro.Size = new System.Drawing.Size(59, 17);
-            this.radioButtonWiadro.TabIndex = 5;
-            this.radioButtonWiadro.TabStop = true;
-            this.radioButtonWiadro.Text = "Wiadro";
-            this.radioButtonWiadro.UseVisualStyleBackColor = true;
+            this.pomniejszToolStripMenuItem.Name = "pomniejszToolStripMenuItem";
+            this.pomniejszToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.pomniejszToolStripMenuItem.Text = "pomniejsz";
+            this.pomniejszToolStripMenuItem.Click += new System.EventHandler(this.pomniejszToolStripMenuItem_Click);
             // 
             // OknoProgramu
             // 
@@ -483,6 +501,8 @@
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButtonWiadro;
+        private System.Windows.Forms.ToolStripMenuItem powiekszToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomniejszToolStripMenuItem;
     }
 }
 

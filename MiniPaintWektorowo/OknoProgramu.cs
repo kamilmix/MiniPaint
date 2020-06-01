@@ -20,11 +20,14 @@ namespace MiniPaintWektorowo
         Graphics gp;
         List<Point> punktyRobocze = new List<Point>();
         Rysunek rysunek;
+        float skala = 1.0f;
+        Size bazowyRozmiar;
         public OknoProgramu()
         {
             InitializeComponent();
             pictureBoxRamka.Image = new Bitmap(pictureBoxRamka.Width, pictureBoxRamka.Height);
             pictureBoxPodglad.Image = new Bitmap(pictureBoxPodglad.Width, pictureBoxPodglad.Height);
+            bazowyRozmiar = pictureBoxRamka.Size;
             pictureBoxPodglad.BackColor = Color.White;
             g = Graphics.FromImage(pictureBoxRamka.Image);
 
@@ -34,7 +37,6 @@ namespace MiniPaintWektorowo
             rysunek.Rysuj(g);
             pictureBoxRamka.Refresh();
 
-           
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -192,7 +194,8 @@ namespace MiniPaintWektorowo
                 using (FileStream stream = new FileStream(openDlg.FileName, FileMode.Open)) {
                     noweTlo(Image.FromStream(stream));
                 }
-
+                bazowyRozmiar = pictureBoxRamka.Size;
+                skala = 1.0f;
                 imageFileDirectory = openDlg.FileName;
                 
             }else{
@@ -243,6 +246,25 @@ namespace MiniPaintWektorowo
         private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e) {
             AboutBox1 AboutMe = new AboutBox1();
             AboutMe.Show();
+        }
+
+        private void zmienSkale() {
+            noweTlo(przeskaluj((Bitmap) pictureBoxRamka.Image));
+
+        }
+
+        private Image przeskaluj(Bitmap obraz) {
+            return (Image)new Bitmap(obraz, new Size(Convert.ToInt32(bazowyRozmiar.Width * skala),Convert.ToInt32(bazowyRozmiar.Height * skala) ));
+        }
+
+        private void powiekszToolStripMenuItem_Click(object sender, EventArgs e) {
+            skala *= 2.0f;
+            zmienSkale();
+        }
+
+        private void pomniejszToolStripMenuItem_Click(object sender, EventArgs e) {
+            skala /= 2.0f;
+            zmienSkale();
         }
     }
 }
