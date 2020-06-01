@@ -60,25 +60,32 @@
             this.wklejToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.powiekszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomniejszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.powiekszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomniejszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioButtonTekst = new System.Windows.Forms.RadioButton();
+            this.groupBoxTekst = new System.Windows.Forms.GroupBox();
+            this.textBoxTekst = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.buttonCzcionka = new System.Windows.Forms.Button();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPodglad)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.groupBoxTekst.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 225);
+            this.label1.Location = new System.Drawing.Point(9, 275);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 7;
@@ -87,7 +94,7 @@
             // buttonKolorLinii
             // 
             this.buttonKolorLinii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.buttonKolorLinii.Location = new System.Drawing.Point(79, 225);
+            this.buttonKolorLinii.Location = new System.Drawing.Point(79, 275);
             this.buttonKolorLinii.Name = "buttonKolorLinii";
             this.buttonKolorLinii.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorLinii.TabIndex = 6;
@@ -96,6 +103,7 @@
             // 
             // groupBoxKsztalt
             // 
+            this.groupBoxKsztalt.Controls.Add(this.radioButtonTekst);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonWiadro);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonGumka);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonElipsa);
@@ -104,7 +112,7 @@
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKrzywa);
             this.groupBoxKsztalt.Location = new System.Drawing.Point(12, 27);
             this.groupBoxKsztalt.Name = "groupBoxKsztalt";
-            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 166);
+            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 197);
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
@@ -184,7 +192,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 254);
+            this.label2.Location = new System.Drawing.Point(9, 304);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 9;
@@ -193,7 +201,7 @@
             // buttonKolorWypelnienia
             // 
             this.buttonKolorWypelnienia.BackColor = System.Drawing.Color.Yellow;
-            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(79, 254);
+            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(79, 304);
             this.buttonKolorWypelnienia.Name = "buttonKolorWypelnienia";
             this.buttonKolorWypelnienia.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorWypelnienia.TabIndex = 8;
@@ -203,7 +211,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 199);
+            this.label3.Location = new System.Drawing.Point(9, 249);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 10;
@@ -211,7 +219,7 @@
             // 
             // numericUpDownGruboscLinii
             // 
-            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(79, 199);
+            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(79, 249);
             this.numericUpDownGruboscLinii.Maximum = new decimal(new int[] {
             20,
             0,
@@ -373,6 +381,20 @@
             this.oProgramieToolStripMenuItem.Text = "O programie";
             this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
             // 
+            // powiekszToolStripMenuItem
+            // 
+            this.powiekszToolStripMenuItem.Name = "powiekszToolStripMenuItem";
+            this.powiekszToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.powiekszToolStripMenuItem.Text = "powieksz";
+            this.powiekszToolStripMenuItem.Click += new System.EventHandler(this.powiekszToolStripMenuItem_Click);
+            // 
+            // pomniejszToolStripMenuItem
+            // 
+            this.pomniejszToolStripMenuItem.Name = "pomniejszToolStripMenuItem";
+            this.pomniejszToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.pomniejszToolStripMenuItem.Text = "pomniejsz";
+            this.pomniejszToolStripMenuItem.Click += new System.EventHandler(this.pomniejszToolStripMenuItem_Click);
+            // 
             // pictureBoxPodglad
             // 
             this.pictureBoxPodglad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -390,7 +412,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelCursorPosition});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 390);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 460);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(619, 22);
             this.statusStrip1.TabIndex = 14;
@@ -416,25 +438,64 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // powiekszToolStripMenuItem
+            // radioButtonTekst
             // 
-            this.powiekszToolStripMenuItem.Name = "powiekszToolStripMenuItem";
-            this.powiekszToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.powiekszToolStripMenuItem.Text = "powieksz";
-            this.powiekszToolStripMenuItem.Click += new System.EventHandler(this.powiekszToolStripMenuItem_Click);
+            this.radioButtonTekst.AutoSize = true;
+            this.radioButtonTekst.Location = new System.Drawing.Point(8, 159);
+            this.radioButtonTekst.Name = "radioButtonTekst";
+            this.radioButtonTekst.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonTekst.TabIndex = 6;
+            this.radioButtonTekst.TabStop = true;
+            this.radioButtonTekst.Text = "Tekst";
+            this.radioButtonTekst.UseVisualStyleBackColor = true;
             // 
-            // pomniejszToolStripMenuItem
+            // groupBoxTekst
             // 
-            this.pomniejszToolStripMenuItem.Name = "pomniejszToolStripMenuItem";
-            this.pomniejszToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.pomniejszToolStripMenuItem.Text = "pomniejsz";
-            this.pomniejszToolStripMenuItem.Click += new System.EventHandler(this.pomniejszToolStripMenuItem_Click);
+            this.groupBoxTekst.Controls.Add(this.buttonCzcionka);
+            this.groupBoxTekst.Controls.Add(this.button1);
+            this.groupBoxTekst.Controls.Add(this.textBoxTekst);
+            this.groupBoxTekst.Location = new System.Drawing.Point(12, 333);
+            this.groupBoxTekst.Name = "groupBoxTekst";
+            this.groupBoxTekst.Size = new System.Drawing.Size(99, 100);
+            this.groupBoxTekst.TabIndex = 15;
+            this.groupBoxTekst.TabStop = false;
+            this.groupBoxTekst.Text = "Tekst";
+            this.groupBoxTekst.Visible = false;
+            // 
+            // textBoxTekst
+            // 
+            this.textBoxTekst.Location = new System.Drawing.Point(7, 19);
+            this.textBoxTekst.Name = "textBoxTekst";
+            this.textBoxTekst.Size = new System.Drawing.Size(86, 20);
+            this.textBoxTekst.TabIndex = 0;
+            this.textBoxTekst.TextChanged += new System.EventHandler(this.textBoxTekst_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Dodaj";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonCzcionka
+            // 
+            this.buttonCzcionka.Location = new System.Drawing.Point(8, 74);
+            this.buttonCzcionka.Name = "buttonCzcionka";
+            this.buttonCzcionka.Size = new System.Drawing.Size(75, 23);
+            this.buttonCzcionka.TabIndex = 2;
+            this.buttonCzcionka.Text = "Czcionka";
+            this.buttonCzcionka.UseVisualStyleBackColor = true;
+            this.buttonCzcionka.Click += new System.EventHandler(this.buttonCzcionka_Click);
             // 
             // OknoProgramu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 412);
+            this.ClientSize = new System.Drawing.Size(619, 482);
+            this.Controls.Add(this.groupBoxTekst);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBoxPodglad);
             this.Controls.Add(this.pictureBoxRamka);
@@ -458,6 +519,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPodglad)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBoxTekst.ResumeLayout(false);
+            this.groupBoxTekst.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,6 +566,12 @@
         private System.Windows.Forms.RadioButton radioButtonWiadro;
         private System.Windows.Forms.ToolStripMenuItem powiekszToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pomniejszToolStripMenuItem;
+        private System.Windows.Forms.RadioButton radioButtonTekst;
+        private System.Windows.Forms.GroupBox groupBoxTekst;
+        private System.Windows.Forms.TextBox textBoxTekst;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.Button buttonCzcionka;
     }
 }
 

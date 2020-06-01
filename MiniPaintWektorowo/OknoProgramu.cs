@@ -22,6 +22,7 @@ namespace MiniPaintWektorowo
         Rysunek rysunek;
         float skala = 1.0f;
         Size bazowyRozmiar;
+        Font font;
         public OknoProgramu()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace MiniPaintWektorowo
             bazowyRozmiar = pictureBoxRamka.Size;
             pictureBoxPodglad.BackColor = Color.White;
             g = Graphics.FromImage(pictureBoxRamka.Image);
-
+            font = new Font("Arial", 16);
 
 
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
@@ -45,6 +46,20 @@ namespace MiniPaintWektorowo
             {
                 punktyRobocze.Clear();
                 punktyRobocze.Add(e.Location);
+
+               
+
+                if (radioButtonTekst.Checked)
+                {
+                    groupBoxTekst.Visible = true;
+                    groupBoxKsztalt.Enabled = false;
+                    //figura = new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text);
+                    //gp = Graphics.FromImage(pictureBoxPodglad.Image);
+                    //figura.Rysuj(gp);
+                    //pictureBoxPodglad.Refresh();
+
+                }
+                
             }
         }
 
@@ -79,10 +94,16 @@ namespace MiniPaintWektorowo
                 else if (radioButtonGumka.Checked)
                 {
                     figura = new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze);
+                } 
+                else if (radioButtonTekst.Checked)
+                {
+                   // figura = new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text);
                 }
-
-                figura.Rysuj(gp);
-                pictureBoxPodglad.Refresh();
+                if(figura != null)
+                { 
+                    figura.Rysuj(gp);
+                    pictureBoxPodglad.Refresh();
+                }
 
             }
 
@@ -117,6 +138,10 @@ namespace MiniPaintWektorowo
                 else if (radioButtonGumka.Checked)
                 {
                     rysunek.Dodaj(new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze));
+                } 
+                else if (radioButtonTekst.Checked)
+                {
+                   // rysunek.Dodaj(new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text));
                 }
 
                 rysunek.Rysuj(g);
@@ -265,6 +290,39 @@ namespace MiniPaintWektorowo
         private void pomniejszToolStripMenuItem_Click(object sender, EventArgs e) {
             skala /= 2.0f;
             zmienSkale();
+        }
+
+        private void textBoxTekst_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxTekst.Text != "")
+            {
+
+                rysunek.Usun(gp);
+            }
+            Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
+            rysunek.Dodaj(figura);
+            gp = Graphics.FromImage(pictureBoxPodglad.Image);
+            figura.Rysuj(gp);
+            pictureBoxPodglad.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            rysunek.Dodaj(new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font));
+            rysunek.Rysuj(g);
+            pictureBoxRamka.Refresh();
+            textBoxTekst.Text = "";
+            groupBoxKsztalt.Enabled = true;
+            groupBoxTekst.Visible = false;
+
+        }
+
+        private void buttonCzcionka_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+               font = fontDialog1.Font;
+            }
         }
     }
 }

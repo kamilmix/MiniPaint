@@ -60,6 +60,7 @@
     <Compile Include="MojeKlasy\Linia.cs" />
     <Compile Include="MojeKlasy\FiguraWypelniona.cs" />
     <Compile Include="MojeKlasy\Figura.cs" />
+    <Compile Include="MojeKlasy\Tekst.cs" />
     <Compile Include="MojeKlasy\Wiadro.cs" />
     <Compile Include="OknoProgramu.cs">
       <SubType>Form</SubType>
