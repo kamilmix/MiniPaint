@@ -448,7 +448,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OknoProgramu";
-            this.Text = "MiniPaint wektorowy";
+            this.Text = "MiniPaint wektorowy - niezapisane*";
             this.groupBoxKsztalt.ResumeLayout(false);
             this.groupBoxKsztalt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).EndInit();
