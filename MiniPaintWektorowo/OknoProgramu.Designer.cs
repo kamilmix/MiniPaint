@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKolorLinii = new System.Windows.Forms.Button();
             this.groupBoxKsztalt = new System.Windows.Forms.GroupBox();
+            this.radioButtonTekst = new System.Windows.Forms.RadioButton();
             this.radioButtonWiadro = new System.Windows.Forms.RadioButton();
             this.radioButtonGumka = new System.Windows.Forms.RadioButton();
             this.radioButtonElipsa = new System.Windows.Forms.RadioButton();
@@ -67,12 +68,12 @@
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.radioButtonTekst = new System.Windows.Forms.RadioButton();
             this.groupBoxTekst = new System.Windows.Forms.GroupBox();
-            this.textBoxTekst = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.buttonCzcionka = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxTekst = new System.Windows.Forms.TextBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.radioButtonKolor = new System.Windows.Forms.RadioButton();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -103,6 +104,7 @@
             // 
             // groupBoxKsztalt
             // 
+            this.groupBoxKsztalt.Controls.Add(this.radioButtonKolor);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonTekst);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonWiadro);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonGumka);
@@ -112,10 +114,21 @@
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKrzywa);
             this.groupBoxKsztalt.Location = new System.Drawing.Point(12, 27);
             this.groupBoxKsztalt.Name = "groupBoxKsztalt";
-            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 197);
+            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 216);
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
+            // 
+            // radioButtonTekst
+            // 
+            this.radioButtonTekst.AutoSize = true;
+            this.radioButtonTekst.Location = new System.Drawing.Point(8, 159);
+            this.radioButtonTekst.Name = "radioButtonTekst";
+            this.radioButtonTekst.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonTekst.TabIndex = 6;
+            this.radioButtonTekst.TabStop = true;
+            this.radioButtonTekst.Text = "Tekst";
+            this.radioButtonTekst.UseVisualStyleBackColor = true;
             // 
             // radioButtonWiadro
             // 
@@ -438,17 +451,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // radioButtonTekst
-            // 
-            this.radioButtonTekst.AutoSize = true;
-            this.radioButtonTekst.Location = new System.Drawing.Point(8, 159);
-            this.radioButtonTekst.Name = "radioButtonTekst";
-            this.radioButtonTekst.Size = new System.Drawing.Size(52, 17);
-            this.radioButtonTekst.TabIndex = 6;
-            this.radioButtonTekst.TabStop = true;
-            this.radioButtonTekst.Text = "Tekst";
-            this.radioButtonTekst.UseVisualStyleBackColor = true;
-            // 
             // groupBoxTekst
             // 
             this.groupBoxTekst.Controls.Add(this.buttonCzcionka);
@@ -462,13 +464,15 @@
             this.groupBoxTekst.Text = "Tekst";
             this.groupBoxTekst.Visible = false;
             // 
-            // textBoxTekst
+            // buttonCzcionka
             // 
-            this.textBoxTekst.Location = new System.Drawing.Point(7, 19);
-            this.textBoxTekst.Name = "textBoxTekst";
-            this.textBoxTekst.Size = new System.Drawing.Size(86, 20);
-            this.textBoxTekst.TabIndex = 0;
-            this.textBoxTekst.TextChanged += new System.EventHandler(this.textBoxTekst_TextChanged);
+            this.buttonCzcionka.Location = new System.Drawing.Point(8, 74);
+            this.buttonCzcionka.Name = "buttonCzcionka";
+            this.buttonCzcionka.Size = new System.Drawing.Size(75, 23);
+            this.buttonCzcionka.TabIndex = 2;
+            this.buttonCzcionka.Text = "Czcionka";
+            this.buttonCzcionka.UseVisualStyleBackColor = true;
+            this.buttonCzcionka.Click += new System.EventHandler(this.buttonCzcionka_Click);
             // 
             // button1
             // 
@@ -480,15 +484,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonCzcionka
+            // textBoxTekst
             // 
-            this.buttonCzcionka.Location = new System.Drawing.Point(8, 74);
-            this.buttonCzcionka.Name = "buttonCzcionka";
-            this.buttonCzcionka.Size = new System.Drawing.Size(75, 23);
-            this.buttonCzcionka.TabIndex = 2;
-            this.buttonCzcionka.Text = "Czcionka";
-            this.buttonCzcionka.UseVisualStyleBackColor = true;
-            this.buttonCzcionka.Click += new System.EventHandler(this.buttonCzcionka_Click);
+            this.textBoxTekst.Location = new System.Drawing.Point(7, 19);
+            this.textBoxTekst.Name = "textBoxTekst";
+            this.textBoxTekst.Size = new System.Drawing.Size(86, 20);
+            this.textBoxTekst.TabIndex = 0;
+            this.textBoxTekst.TextChanged += new System.EventHandler(this.textBoxTekst_TextChanged);
+            // 
+            // radioButtonKolor
+            // 
+            this.radioButtonKolor.AutoSize = true;
+            this.radioButtonKolor.Location = new System.Drawing.Point(8, 182);
+            this.radioButtonKolor.Name = "radioButtonKolor";
+            this.radioButtonKolor.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonKolor.TabIndex = 7;
+            this.radioButtonKolor.TabStop = true;
+            this.radioButtonKolor.Text = "pobierz kolor";
+            this.radioButtonKolor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButtonKolor.UseVisualStyleBackColor = true;
             // 
             // OknoProgramu
             // 
@@ -572,6 +586,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button buttonCzcionka;
+        private System.Windows.Forms.RadioButton radioButtonKolor;
     }
 }
 

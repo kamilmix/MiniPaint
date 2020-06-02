@@ -138,10 +138,12 @@ namespace MiniPaintWektorowo
                 else if (radioButtonGumka.Checked)
                 {
                     rysunek.Dodaj(new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze));
-                } 
-                else if (radioButtonTekst.Checked)
-                {
-                   // rysunek.Dodaj(new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text));
+                }
+                else if (radioButtonTekst.Checked) {
+                    // rysunek.Dodaj(new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text));
+                }
+                else if (radioButtonKolor.Checked) {
+                    buttonKolorLinii.BackColor = new Bitmap(pictureBoxRamka.Image).GetPixel(e.Location.X,e.Location.Y);
                 }
 
                 rysunek.Rysuj(g);
@@ -311,7 +313,6 @@ namespace MiniPaintWektorowo
         {
             if (textBoxTekst.Text != "")
             {
-
                 rysunek.Usun(gp);
             }
             Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
