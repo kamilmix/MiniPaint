@@ -20,7 +20,6 @@ namespace MiniPaintWektorowo
         Graphics gp;
         List<Point> punktyRobocze = new List<Point>();
         Rysunek rysunek;
-        float skala = 1.0f;
         Size bazowyRozmiar;
         Font font;
         public OknoProgramu()
@@ -237,7 +236,7 @@ namespace MiniPaintWektorowo
 
                 Text = "MiniPaint wektorowy - " + openDlg.SafeFileName;
                 bazowyRozmiar = pictureBoxRamka.Size;
-                skala = 1.0f;
+                trackBar1.Value = 10;
                 imageFileDirectory = openDlg.FileName;
                 
             }else{
@@ -290,23 +289,13 @@ namespace MiniPaintWektorowo
             AboutMe.Show();
         }
 
-        private void zmienSkale() {
-            noweTlo(przeskaluj((Bitmap) pictureBoxRamka.Image));
+        private void zmienSkale(double skala) {
+            noweTlo(przeskaluj((Bitmap) pictureBoxRamka.Image, skala));
 
         }
 
-        private Image przeskaluj(Bitmap obraz) {
+        private Image przeskaluj(Bitmap obraz, double skala) {
             return (Image)new Bitmap(obraz, new Size(Convert.ToInt32(bazowyRozmiar.Width * skala),Convert.ToInt32(bazowyRozmiar.Height * skala) ));
-        }
-
-        private void powiekszToolStripMenuItem_Click(object sender, EventArgs e) {
-            skala *= 2.0f;
-            zmienSkale();
-        }
-
-        private void pomniejszToolStripMenuItem_Click(object sender, EventArgs e) {
-            skala /= 2.0f;
-            zmienSkale();
         }
 
         private void textBoxTekst_TextChanged(object sender, EventArgs e)
@@ -339,6 +328,12 @@ namespace MiniPaintWektorowo
             {
                font = fontDialog1.Font;
             }
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            double skala = trackBar1.Value / 10.0;
+            zmienSkale(skala);
         }
     }
 }

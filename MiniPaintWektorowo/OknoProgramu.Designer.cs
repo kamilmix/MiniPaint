@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKolorLinii = new System.Windows.Forms.Button();
             this.groupBoxKsztalt = new System.Windows.Forms.GroupBox();
+            this.radioButtonKolor = new System.Windows.Forms.RadioButton();
             this.radioButtonTekst = new System.Windows.Forms.RadioButton();
             this.radioButtonWiadro = new System.Windows.Forms.RadioButton();
             this.radioButtonGumka = new System.Windows.Forms.RadioButton();
@@ -61,8 +62,6 @@
             this.wklejToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.powiekszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomniejszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxPodglad = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCursorPosition = new System.Windows.Forms.ToolStripStatusLabel();
@@ -73,7 +72,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxTekst = new System.Windows.Forms.TextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.radioButtonKolor = new System.Windows.Forms.RadioButton();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -81,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPodglad)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBoxTekst.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -118,6 +118,18 @@
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
+            // 
+            // radioButtonKolor
+            // 
+            this.radioButtonKolor.AutoSize = true;
+            this.radioButtonKolor.Location = new System.Drawing.Point(8, 182);
+            this.radioButtonKolor.Name = "radioButtonKolor";
+            this.radioButtonKolor.Size = new System.Drawing.Size(85, 17);
+            this.radioButtonKolor.TabIndex = 7;
+            this.radioButtonKolor.TabStop = true;
+            this.radioButtonKolor.Text = "pobierz kolor";
+            this.radioButtonKolor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButtonKolor.UseVisualStyleBackColor = true;
             // 
             // radioButtonTekst
             // 
@@ -257,9 +269,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
             this.edycjaToolStripMenuItem,
-            this.pomocToolStripMenuItem,
-            this.powiekszToolStripMenuItem,
-            this.pomniejszToolStripMenuItem});
+            this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(619, 24);
@@ -394,20 +404,6 @@
             this.oProgramieToolStripMenuItem.Text = "O programie";
             this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
             // 
-            // powiekszToolStripMenuItem
-            // 
-            this.powiekszToolStripMenuItem.Name = "powiekszToolStripMenuItem";
-            this.powiekszToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.powiekszToolStripMenuItem.Text = "powieksz";
-            this.powiekszToolStripMenuItem.Click += new System.EventHandler(this.powiekszToolStripMenuItem_Click);
-            // 
-            // pomniejszToolStripMenuItem
-            // 
-            this.pomniejszToolStripMenuItem.Name = "pomniejszToolStripMenuItem";
-            this.pomniejszToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.pomniejszToolStripMenuItem.Text = "pomniejsz";
-            this.pomniejszToolStripMenuItem.Click += new System.EventHandler(this.pomniejszToolStripMenuItem_Click);
-            // 
             // pictureBoxPodglad
             // 
             this.pictureBoxPodglad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -425,7 +421,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelCursorPosition});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 460);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 527);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(619, 22);
             this.statusStrip1.TabIndex = 14;
@@ -492,23 +488,24 @@
             this.textBoxTekst.TabIndex = 0;
             this.textBoxTekst.TextChanged += new System.EventHandler(this.textBoxTekst_TextChanged);
             // 
-            // radioButtonKolor
+            // trackBar1
             // 
-            this.radioButtonKolor.AutoSize = true;
-            this.radioButtonKolor.Location = new System.Drawing.Point(8, 182);
-            this.radioButtonKolor.Name = "radioButtonKolor";
-            this.radioButtonKolor.Size = new System.Drawing.Size(85, 17);
-            this.radioButtonKolor.TabIndex = 7;
-            this.radioButtonKolor.TabStop = true;
-            this.radioButtonKolor.Text = "pobierz kolor";
-            this.radioButtonKolor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButtonKolor.UseVisualStyleBackColor = true;
+            this.trackBar1.Location = new System.Drawing.Point(12, 439);
+            this.trackBar1.Maximum = 40;
+            this.trackBar1.Minimum = 10;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(99, 45);
+            this.trackBar1.TabIndex = 16;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Value = 10;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // OknoProgramu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 482);
+            this.ClientSize = new System.Drawing.Size(619, 549);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.groupBoxTekst);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBoxPodglad);
@@ -535,6 +532,7 @@
             this.statusStrip1.PerformLayout();
             this.groupBoxTekst.ResumeLayout(false);
             this.groupBoxTekst.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -578,8 +576,6 @@
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oProgramieToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButtonWiadro;
-        private System.Windows.Forms.ToolStripMenuItem powiekszToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pomniejszToolStripMenuItem;
         private System.Windows.Forms.RadioButton radioButtonTekst;
         private System.Windows.Forms.GroupBox groupBoxTekst;
         private System.Windows.Forms.TextBox textBoxTekst;
@@ -587,6 +583,7 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button buttonCzcionka;
         private System.Windows.Forms.RadioButton radioButtonKolor;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
