@@ -51,6 +51,8 @@ namespace MiniPaintWektorowo
                     groupBoxKsztalt.Enabled = false;
                     Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
                     rysunek.Dodaj(figura);
+                }else if (radioButtonWiadro.Checked) {
+                    FloodFill(new Bitmap(pictureBoxRamka.Image), e.Location);
                 }
             }
         }
@@ -393,5 +395,35 @@ namespace MiniPaintWektorowo
             gp = Graphics.FromImage(pictureBoxPodglad.Image);
             pictureBoxPodglad.Refresh();
         }
+
+        #region Floodfill
+        private void FloodFill(Bitmap bmp, Point pt) {
+            Stack<Point> pixels = new Stack<Point>();
+            Color targetColor = bmp.GetPixel(pt.X, pt.Y);
+            Color replacementColor = buttonKolorLinii.BackColor;
+            pixels.Push(pt);
+
+            while (pixels.Count > 0) {
+                Point a = pixels.Pop();
+                if (a.X < bmp.Width && a.X > 0 &&
+                        a.Y < bmp.Height && a.Y > 0) {
+
+                    if (bmp.GetPixel(a.X, a.Y) == targetColor) {
+                        bmp.SetPixel(a.X, a.Y, replacementColor);
+                        pixels.Push(new Point(a.X - 1, a.Y));
+                        pixels.Push(new Point(a.X + 1, a.Y));
+                        pixels.Push(new Point(a.X, a.Y - 1));
+                        pixels.Push(new Point(a.X, a.Y + 1));
+                    }
+                }
+            }
+            pictureBoxRamka.Image = bmp;
+            pictureBoxPodglad.Image = bmp;
+            rysunek = new Rysunek(bmp);
+            rysunek.Rysuj(g);
+            pictureBoxRamka.Refresh();
+            pictureBoxPodglad.Refresh();
+        }
+        #endregion
     }
 }
