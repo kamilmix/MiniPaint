@@ -52,6 +52,8 @@ namespace MiniPaintWektorowo
                 {
                     groupBoxTekst.Visible = true;
                     groupBoxKsztalt.Enabled = false;
+                    Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
+                    rysunek.Dodaj(figura);
                     //figura = new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text);
                     //gp = Graphics.FromImage(pictureBoxPodglad.Image);
                     //figura.Rysuj(gp);
@@ -300,10 +302,8 @@ namespace MiniPaintWektorowo
 
         private void textBoxTekst_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxTekst.Text != "")
-            {
-                rysunek.Usun(gp);
-            }
+            rysunek.Usun(gp);
+            
             Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
             rysunek.Dodaj(figura);
             gp = Graphics.FromImage(pictureBoxPodglad.Image);
