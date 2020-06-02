@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="MojeKlasy\FiguraNiewypelniona.cs" />
     <Compile Include="MojeKlasy\Gumka.cs" />
+    <Compile Include="MojeKlasy\Obraz.cs" />
     <Compile Include="MojeKlasy\Krzywa.cs" />
     <Compile Include="MojeKlasy\Elipsa.cs" />
     <Compile Include="MojeKlasy\Prostokat.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="MojeKlasy\Figura.cs" />
     <Compile Include="MojeKlasy\Tekst.cs" />
     <Compile Include="MojeKlasy\Wiadro.cs" />
+    <Compile Include="MojeKlasy\Zaznaczenie.cs" />
     <Compile Include="NewDialog.cs">
       <SubType>Form</SubType>
     </Compile>

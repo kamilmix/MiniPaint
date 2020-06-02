@@ -32,7 +32,6 @@ namespace MiniPaintWektorowo
             g = Graphics.FromImage(pictureBoxRamka.Image);
             font = new Font("Arial", 16);
 
-
             rysunek = new Rysunek(pictureBoxRamka.Width, pictureBoxRamka.Height, Color.White);
             rysunek.Rysuj(g);
             pictureBoxRamka.Refresh();
@@ -46,21 +45,13 @@ namespace MiniPaintWektorowo
                 punktyRobocze.Clear();
                 punktyRobocze.Add(e.Location);
 
-               
-
                 if (radioButtonTekst.Checked)
                 {
                     groupBoxTekst.Visible = true;
                     groupBoxKsztalt.Enabled = false;
                     Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
                     rysunek.Dodaj(figura);
-                    //figura = new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text);
-                    //gp = Graphics.FromImage(pictureBoxPodglad.Image);
-                    //figura.Rysuj(gp);
-                    //pictureBoxPodglad.Refresh();
-
                 }
-                
             }
         }
 
@@ -95,20 +86,17 @@ namespace MiniPaintWektorowo
                 else if (radioButtonGumka.Checked)
                 {
                     figura = new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze);
-                } 
-                else if (radioButtonTekst.Checked)
-                {
-                   // figura = new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text);
                 }
-                if(figura != null)
-                { 
+                else if (radioButtonSelect.Checked)
+                {
+                    figura = new Zaznaczenie(Color.Red, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), punktyRobocze.Last());
+                }
+                if (figura != null)
+                {
                     figura.Rysuj(gp);
                     pictureBoxPodglad.Refresh();
                 }
-
             }
-
-
         }
 
 
@@ -140,17 +128,46 @@ namespace MiniPaintWektorowo
                 {
                     rysunek.Dodaj(new Gumka(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze));
                 }
-                else if (radioButtonTekst.Checked) {
-                    // rysunek.Dodaj(new Tekst(Color.White, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text));
+                else if (radioButtonSelect.Checked)
+                {
+                    EnableCopyCutMenuItems(true);
                 }
-                else if (radioButtonKolor.Checked) {
-                    buttonKolorLinii.BackColor = new Bitmap(pictureBoxRamka.Image).GetPixel(e.Location.X,e.Location.Y);
+                else if (radioButtonKolor.Checked)
+                {
+                    buttonKolorLinii.BackColor = new Bitmap(pictureBoxRamka.Image).GetPixel(e.Location.X, e.Location.Y);
                 }
 
                 rysunek.Rysuj(g);
 
                 pictureBoxRamka.Refresh();
             }
+        }
+
+        private void EnableCopyCutMenuItems(bool b)
+        {
+            kopiujToolStripMenuItem.Enabled = b;
+            wytnijToolStripMenuItem.Enabled = b;
+        }
+
+        private void copyToClipboard(Point p1, Point p2)
+        {
+
+            Rectangle rect = new Rectangle(
+                                Math.Min(p1.X, p2.X),
+                                Math.Min(p1.Y, p2.Y),
+                                Math.Abs(p1.X - p2.X),
+                                Math.Abs(p1.Y - p2.Y));
+            Bitmap bm = new Bitmap(rect.Width, rect.Height);
+
+            using (Graphics gr = Graphics.FromImage(bm))
+            {
+                Rectangle dest_rect =
+                    new Rectangle(0, 0, rect.Width, rect.Height);
+                gr.DrawImage(pictureBoxRamka.Image, dest_rect, rect,
+                    GraphicsUnit.Pixel);
+            }
+
+            Clipboard.SetImage(bm);
         }
 
         private void buttonKolorLinii_Click(object sender, EventArgs e)
@@ -169,11 +186,6 @@ namespace MiniPaintWektorowo
             {
                 buttonKolorWypelnienia.BackColor = kolorOkno.Color;
             }
-        }
-
-        private void pictureBoxRamka_Click(object sender, EventArgs e)
-        {
-
         }
 
         #region file options
@@ -195,7 +207,8 @@ namespace MiniPaintWektorowo
         {
             NewDialog dialog = new NewDialog();
 
-            if (dialog.ShowDialog(this) == DialogResult.OK) {
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
                 bazowyRozmiar = dialog.ImageSize;
                 pictureBoxRamka.Image = new Bitmap(bazowyRozmiar.Width, bazowyRozmiar.Height);
                 pictureBoxPodglad.Image = new Bitmap(bazowyRozmiar.Width, bazowyRozmiar.Height);
@@ -211,28 +224,34 @@ namespace MiniPaintWektorowo
             }
         }
 
-        private void fileSaveMenuItem_Click(object sender, EventArgs e) {
+        private void fileSaveMenuItem_Click(object sender, EventArgs e)
+        {
             if (imageFileDirectory != null)
-               pictureBoxRamka.Image.Save(imageFileDirectory, System.Drawing.Imaging.ImageFormat.Bmp);
-          else
-               fileSaveAsMenuItem_Click(sender, e);
+                pictureBoxRamka.Image.Save(imageFileDirectory, System.Drawing.Imaging.ImageFormat.Bmp);
+            else
+                fileSaveAsMenuItem_Click(sender, e);
         }
 
-        private void fileSaveAsMenuItem_Click(object sender, EventArgs e) {
-          SaveFileDialog saveDlg = new SaveFileDialog();
-          saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
-          if (saveDlg.ShowDialog() == DialogResult.OK) {                                                    
+        private void fileSaveAsMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "Bitmap (*.bmp)|*.bmp";
+            if (saveDlg.ShowDialog() == DialogResult.OK)
+            {
                 pictureBoxRamka.Image.Save(saveDlg.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
                 Text = "MiniPaint wektorowy - " + System.IO.Path.GetFileName(saveDlg.FileName);
                 imageFileDirectory = saveDlg.FileName;
-          }
+            }
         }
-        private void fileOpenMenuItem_Click(object sender, EventArgs e) { 
+        private void fileOpenMenuItem_Click(object sender, EventArgs e)
+        {
             OpenFileDialog openDlg = new OpenFileDialog();
             openDlg.Filter = "Image Files .BMP .JPG .GIF .Png|*.BMP;*.JPG;*.GIF;*.PNG";
-            if (openDlg.ShowDialog() == DialogResult.OK) {
+            if (openDlg.ShowDialog() == DialogResult.OK)
+            {
 
-                using (FileStream stream = new FileStream(openDlg.FileName, FileMode.Open)) {
+                using (FileStream stream = new FileStream(openDlg.FileName, FileMode.Open))
+                {
                     noweTlo(Image.FromStream(stream));
                 }
 
@@ -240,11 +259,13 @@ namespace MiniPaintWektorowo
                 bazowyRozmiar = pictureBoxRamka.Size;
                 trackBar1.Value = 10;
                 imageFileDirectory = openDlg.FileName;
-                
-            }else{
+
+            }
+            else
+            {
                 MessageBox.Show("Error");
             }
-    }
+        }
 
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -269,14 +290,15 @@ namespace MiniPaintWektorowo
             e.Graphics.DrawImage(pictureBoxRamka.Image, 0, 0);
         }
 
-        private void obrocToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void obrocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Image image = pictureBoxRamka.Image;
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             noweTlo(image);
-
         }
 
-        private void noweTlo(Image image) {
+        private void noweTlo(Image image)
+        {
 
             pictureBoxRamka.Image = new Bitmap(image);
             pictureBoxPodglad.Image = new Bitmap(image);
@@ -286,24 +308,27 @@ namespace MiniPaintWektorowo
             rysunek.Rysuj(g);
             pictureBoxRamka.Refresh();
         }
-        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             AboutBox1 AboutMe = new AboutBox1();
             AboutMe.Show();
         }
 
-        private void zmienSkale(double skala) {
-            noweTlo(przeskaluj((Bitmap) pictureBoxRamka.Image, skala));
+        private void zmienSkale(double skala)
+        {
+            noweTlo(przeskaluj((Bitmap)pictureBoxRamka.Image, skala));
 
         }
 
-        private Image przeskaluj(Bitmap obraz, double skala) {
-            return (Image)new Bitmap(obraz, new Size(Convert.ToInt32(bazowyRozmiar.Width * skala),Convert.ToInt32(bazowyRozmiar.Height * skala) ));
+        private Image przeskaluj(Bitmap obraz, double skala)
+        {
+            return (Image)new Bitmap(obraz, new Size(Convert.ToInt32(bazowyRozmiar.Width * skala), Convert.ToInt32(bazowyRozmiar.Height * skala)));
         }
 
         private void textBoxTekst_TextChanged(object sender, EventArgs e)
         {
             rysunek.Usun(gp);
-            
+
             Figura figura = new Tekst(buttonKolorLinii.BackColor, (int)numericUpDownGruboscLinii.Value, punktyRobocze.First(), textBoxTekst.Text, font);
             rysunek.Dodaj(figura);
             gp = Graphics.FromImage(pictureBoxPodglad.Image);
@@ -319,14 +344,13 @@ namespace MiniPaintWektorowo
             textBoxTekst.Text = "";
             groupBoxKsztalt.Enabled = true;
             groupBoxTekst.Visible = false;
-
         }
 
         private void buttonCzcionka_Click(object sender, EventArgs e)
         {
             if (fontDialog1.ShowDialog() == DialogResult.OK)
             {
-               font = fontDialog1.Font;
+                font = fontDialog1.Font;
             }
         }
 
@@ -334,6 +358,40 @@ namespace MiniPaintWektorowo
         {
             double skala = trackBar1.Value / 10.0;
             zmienSkale(skala);
+        }
+
+        private void kopiujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            copyToClipboard(punktyRobocze.First(), punktyRobocze.Last());
+            hideSelect();
+        }
+
+        private void wytnijToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            copyToClipboard(punktyRobocze.First(), punktyRobocze.Last());
+            rysunek.Dodaj(new Prostokat(Color.White, 1, Color.White, punktyRobocze.First(), punktyRobocze.Last()));
+            rysunek.Rysuj(g);
+            hideSelect();
+        }
+        private void hideSelect()
+        {
+            EnableCopyCutMenuItems(false);
+            pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Image);
+            gp = Graphics.FromImage(pictureBoxPodglad.Image);
+            pictureBoxPodglad.Refresh();
+        }
+
+        private void wklejToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Clipboard.ContainsImage()) return;
+
+            Image clipboard_image = Clipboard.GetImage();
+
+            rysunek.Dodaj(new Obraz(Color.White, 1, punktyRobocze.First(), clipboard_image));
+            rysunek.Rysuj(g);
+            pictureBoxPodglad.Image = new Bitmap(pictureBoxRamka.Image);
+            gp = Graphics.FromImage(pictureBoxPodglad.Image);
+            pictureBoxPodglad.Refresh();
         }
     }
 }

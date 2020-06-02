@@ -73,6 +73,7 @@
             this.textBoxTekst = new System.Windows.Forms.TextBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.radioButtonSelect = new System.Windows.Forms.RadioButton();
             this.groupBoxKsztalt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRamka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGruboscLinii)).BeginInit();
@@ -86,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 275);
+            this.label1.Location = new System.Drawing.Point(8, 303);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 7;
@@ -95,7 +96,7 @@
             // buttonKolorLinii
             // 
             this.buttonKolorLinii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.buttonKolorLinii.Location = new System.Drawing.Point(79, 275);
+            this.buttonKolorLinii.Location = new System.Drawing.Point(78, 303);
             this.buttonKolorLinii.Name = "buttonKolorLinii";
             this.buttonKolorLinii.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorLinii.TabIndex = 6;
@@ -104,6 +105,7 @@
             // 
             // groupBoxKsztalt
             // 
+            this.groupBoxKsztalt.Controls.Add(this.radioButtonSelect);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKolor);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonTekst);
             this.groupBoxKsztalt.Controls.Add(this.radioButtonWiadro);
@@ -114,7 +116,7 @@
             this.groupBoxKsztalt.Controls.Add(this.radioButtonKrzywa);
             this.groupBoxKsztalt.Location = new System.Drawing.Point(12, 27);
             this.groupBoxKsztalt.Name = "groupBoxKsztalt";
-            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 216);
+            this.groupBoxKsztalt.Size = new System.Drawing.Size(99, 244);
             this.groupBoxKsztalt.TabIndex = 5;
             this.groupBoxKsztalt.TabStop = false;
             this.groupBoxKsztalt.Text = "Kształt";
@@ -212,12 +214,11 @@
             this.pictureBoxRamka.Size = new System.Drawing.Size(451, 251);
             this.pictureBoxRamka.TabIndex = 4;
             this.pictureBoxRamka.TabStop = false;
-            this.pictureBoxRamka.Click += new System.EventHandler(this.pictureBoxRamka_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 304);
+            this.label2.Location = new System.Drawing.Point(8, 332);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 9;
@@ -226,7 +227,7 @@
             // buttonKolorWypelnienia
             // 
             this.buttonKolorWypelnienia.BackColor = System.Drawing.Color.Yellow;
-            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(79, 304);
+            this.buttonKolorWypelnienia.Location = new System.Drawing.Point(78, 332);
             this.buttonKolorWypelnienia.Name = "buttonKolorWypelnienia";
             this.buttonKolorWypelnienia.Size = new System.Drawing.Size(32, 23);
             this.buttonKolorWypelnienia.TabIndex = 8;
@@ -236,7 +237,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 249);
+            this.label3.Location = new System.Drawing.Point(8, 277);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 10;
@@ -244,7 +245,7 @@
             // 
             // numericUpDownGruboscLinii
             // 
-            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(79, 249);
+            this.numericUpDownGruboscLinii.Location = new System.Drawing.Point(78, 277);
             this.numericUpDownGruboscLinii.Maximum = new decimal(new int[] {
             20,
             0,
@@ -373,21 +374,29 @@
             // 
             // kopiujToolStripMenuItem
             // 
+            this.kopiujToolStripMenuItem.Enabled = false;
             this.kopiujToolStripMenuItem.Name = "kopiujToolStripMenuItem";
+            this.kopiujToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.kopiujToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.kopiujToolStripMenuItem.Text = "Kopiuj";
+            this.kopiujToolStripMenuItem.Click += new System.EventHandler(this.kopiujToolStripMenuItem_Click);
             // 
             // wytnijToolStripMenuItem
             // 
+            this.wytnijToolStripMenuItem.Enabled = false;
             this.wytnijToolStripMenuItem.Name = "wytnijToolStripMenuItem";
+            this.wytnijToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.wytnijToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wytnijToolStripMenuItem.Text = "Wytnij";
+            this.wytnijToolStripMenuItem.Click += new System.EventHandler(this.wytnijToolStripMenuItem_Click);
             // 
             // wklejToolStripMenuItem
             // 
             this.wklejToolStripMenuItem.Name = "wklejToolStripMenuItem";
+            this.wklejToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.wklejToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.wklejToolStripMenuItem.Text = "Wklej";
+            this.wklejToolStripMenuItem.Click += new System.EventHandler(this.wklejToolStripMenuItem_Click);
             // 
             // pomocToolStripMenuItem
             // 
@@ -452,7 +461,7 @@
             this.groupBoxTekst.Controls.Add(this.buttonCzcionka);
             this.groupBoxTekst.Controls.Add(this.button1);
             this.groupBoxTekst.Controls.Add(this.textBoxTekst);
-            this.groupBoxTekst.Location = new System.Drawing.Point(12, 333);
+            this.groupBoxTekst.Location = new System.Drawing.Point(11, 361);
             this.groupBoxTekst.Name = "groupBoxTekst";
             this.groupBoxTekst.Size = new System.Drawing.Size(99, 100);
             this.groupBoxTekst.TabIndex = 15;
@@ -490,7 +499,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 439);
+            this.trackBar1.Location = new System.Drawing.Point(11, 467);
             this.trackBar1.Maximum = 40;
             this.trackBar1.Minimum = 10;
             this.trackBar1.Name = "trackBar1";
@@ -499,6 +508,17 @@
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Value = 10;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            // 
+            // radioButtonSelect
+            // 
+            this.radioButtonSelect.AutoSize = true;
+            this.radioButtonSelect.Location = new System.Drawing.Point(8, 205);
+            this.radioButtonSelect.Name = "radioButtonSelect";
+            this.radioButtonSelect.Size = new System.Drawing.Size(66, 17);
+            this.radioButtonSelect.TabIndex = 8;
+            this.radioButtonSelect.TabStop = true;
+            this.radioButtonSelect.Text = "Zaznacz";
+            this.radioButtonSelect.UseVisualStyleBackColor = true;
             // 
             // OknoProgramu
             // 
@@ -584,6 +604,7 @@
         private System.Windows.Forms.Button buttonCzcionka;
         private System.Windows.Forms.RadioButton radioButtonKolor;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.RadioButton radioButtonSelect;
     }
 }
 
