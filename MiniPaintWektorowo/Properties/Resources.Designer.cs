@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MiniPaintWektorowo.Properties {
+namespace MiniPaint.Properties {
     using System;
     
     

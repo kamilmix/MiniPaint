@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace MiniPaintWektorowo
+namespace MiniPaint
 {
-    public class Krzywa : FiguraNiewypelniona
+    public class Curve : ShapeUnfilled
     {
         private List<Point> pp;
 
-        public Krzywa(Color kolorLinii, Int32 gruboscLinii, List<Point> pp)
-            : base(kolorLinii, gruboscLinii, pp[0])
+        public Curve(Color lineColor, Int32 lineThick, List<Point> pp)
+            : base(lineColor, lineThick, pp[0])
         {
             this.pp = new List<Point>(pp);
             this.pp.RemoveAt(0);
         }
-        public override void Rysuj(Graphics g)
+        public override void Draw(Graphics g)
         {
-            Pen pen = new Pen(kolorLinii, gruboscLinii)
+            Pen pen = new Pen(lineColor, lineThick)
             {
                 StartCap = System.Drawing.Drawing2D.LineCap.Round,
                 EndCap = System.Drawing.Drawing2D.LineCap.Round
             };
-            g.DrawLine(pen, polozenie, pp[0]);
+            g.DrawLine(pen, position, pp[0]);
             for (int i=0; i<pp.Count-1; i++)
             {
                 g.DrawLine(pen, pp[i], pp[i+1]);

@@ -1,5 +1,5 @@
-﻿namespace MiniPaintWektorowo {
-    partial class NewDialog {
+﻿namespace MiniPaint {
+    partial class NewFileDialog {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -65,7 +65,7 @@
             this.colorBox.Size = new System.Drawing.Size(100, 19);
             this.colorBox.TabIndex = 13;
             this.colorBox.TabStop = false;
-            this.colorBox.Click += new System.EventHandler(this.colorBox_Click);
+            this.colorBox.Click += new System.EventHandler(this.ColorBox_Click);
             // 
             // label3
             // 
@@ -173,8 +173,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.heightBox);
             this.Controls.Add(this.widthBox);
-            this.Name = "NewDialog";
-            this.Text = "NewDialog";
+            this.Name = "NewFileDialog";
+            this.Text = "NewFileDialog";
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).EndInit();

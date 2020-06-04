@@ -52,41 +52,41 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MojeKlasy\FiguraNiewypelniona.cs" />
-    <Compile Include="MojeKlasy\Gumka.cs" />
-    <Compile Include="MojeKlasy\Obraz.cs" />
-    <Compile Include="MojeKlasy\Krzywa.cs" />
-    <Compile Include="MojeKlasy\Elipsa.cs" />
-    <Compile Include="MojeKlasy\Prostokat.cs" />
-    <Compile Include="MojeKlasy\Linia.cs" />
-    <Compile Include="MojeKlasy\FiguraWypelniona.cs" />
-    <Compile Include="MojeKlasy\Figura.cs" />
-    <Compile Include="MojeKlasy\Tekst.cs" />
-    <Compile Include="MojeKlasy\Wiadro.cs" />
-    <Compile Include="MojeKlasy\Zaznaczenie.cs" />
-    <Compile Include="NewDialog.cs">
+    <Compile Include="Model\Common\ShapeUnfilled.cs" />
+    <Compile Include="Model\Tools\Eraser.cs" />
+    <Compile Include="Model\Shapes\ImageUnscaled.cs" />
+    <Compile Include="Model\Shapes\Curve.cs" />
+    <Compile Include="Model\Shapes\Elipse.cs" />
+    <Compile Include="Model\Shapes\Rectangle.cs" />
+    <Compile Include="Model\Shapes\Line.cs" />
+    <Compile Include="Model\Common\ShapeFilled.cs" />
+    <Compile Include="Model\Common\Shape.cs" />
+    <Compile Include="Model\Shapes\Text.cs" />
+    <Compile Include="Model\Tools\FillTool.cs" />
+    <Compile Include="Model\Tools\SelectTool.cs" />
+    <Compile Include="NewFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewDialog.Designer.cs">
-      <DependentUpon>NewDialog.cs</DependentUpon>
+    <Compile Include="NewFileDialog.Designer.cs">
+      <DependentUpon>NewFileDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="OknoProgramu.cs">
+    <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OknoProgramu.Designer.cs">
-      <DependentUpon>OknoProgramu.cs</DependentUpon>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MojeKlasy\Rysunek.cs" />
+    <Compile Include="Model\Common\Drawing.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewDialog.resx">
-      <DependentUpon>NewDialog.cs</DependentUpon>
+    <EmbeddedResource Include="NewFileDialog.resx">
+      <DependentUpon>NewFileDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OknoProgramu.resx">
-      <DependentUpon>OknoProgramu.cs</DependentUpon>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,7 +98,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,4 +1,4 @@
-﻿namespace MiniPaintWektorowo
+﻿namespace MiniPaint
 {
     partial class AboutBox1
     {

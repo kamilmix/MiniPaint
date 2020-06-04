@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiniPaintWektorowo
+namespace MiniPaint
 {
     static class Program
     {
@@ -16,7 +13,7 @@ namespace MiniPaintWektorowo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OknoProgramu());
+            Application.Run(new MainWindow());
         }
     }
 }
