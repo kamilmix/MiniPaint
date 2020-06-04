@@ -41,28 +41,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(315, 36);
+            this.label5.Location = new System.Drawing.Point(159, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 15;
-            this.label5.Text = "pixel";
+            this.label5.Text = "pikseli";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(135, 36);
+            this.label4.Location = new System.Drawing.Point(159, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 14;
-            this.label4.Text = "pixel";
+            this.label4.Text = "pikseli";
             // 
             // colorBox
             // 
             this.colorBox.BackColor = System.Drawing.Color.White;
             this.colorBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorBox.Location = new System.Drawing.Point(6, 79);
+            this.colorBox.Location = new System.Drawing.Point(93, 100);
             this.colorBox.Name = "colorBox";
-            this.colorBox.Size = new System.Drawing.Size(100, 19);
+            this.colorBox.Size = new System.Drawing.Size(31, 26);
             this.colorBox.TabIndex = 13;
             this.colorBox.TabStop = false;
             this.colorBox.Click += new System.EventHandler(this.ColorBox_Click);
@@ -70,33 +70,33 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 63);
+            this.label3.Location = new System.Drawing.Point(37, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Background Color:";
+            this.label3.Text = "Kolor tła:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 13);
+            this.label2.Location = new System.Drawing.Point(30, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Height:";
+            this.label2.Text = "Wysokość";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Location = new System.Drawing.Point(27, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Width:";
+            this.label1.Text = "Szerokość:";
             // 
             // heightBox
             // 
-            this.heightBox.Location = new System.Drawing.Point(189, 29);
+            this.heightBox.Location = new System.Drawing.Point(93, 66);
             this.heightBox.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -108,7 +108,7 @@
             0,
             0});
             this.heightBox.Name = "heightBox";
-            this.heightBox.Size = new System.Drawing.Size(120, 20);
+            this.heightBox.Size = new System.Drawing.Size(60, 20);
             this.heightBox.TabIndex = 9;
             this.heightBox.Value = new decimal(new int[] {
             250,
@@ -118,7 +118,7 @@
             // 
             // widthBox
             // 
-            this.widthBox.Location = new System.Drawing.Point(9, 29);
+            this.widthBox.Location = new System.Drawing.Point(93, 23);
             this.widthBox.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -130,7 +130,7 @@
             0,
             0});
             this.widthBox.Name = "widthBox";
-            this.widthBox.Size = new System.Drawing.Size(120, 20);
+            this.widthBox.Size = new System.Drawing.Size(60, 20);
             this.widthBox.TabIndex = 8;
             this.widthBox.Value = new decimal(new int[] {
             250,
@@ -141,7 +141,7 @@
             // okBtn
             // 
             this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okBtn.Location = new System.Drawing.Point(189, 132);
+            this.okBtn.Location = new System.Drawing.Point(55, 155);
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(75, 23);
             this.okBtn.TabIndex = 17;
@@ -151,18 +151,18 @@
             // cancelBtn
             // 
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Location = new System.Drawing.Point(270, 132);
+            this.cancelBtn.Location = new System.Drawing.Point(136, 155);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 16;
-            this.cancelBtn.Text = "&Cancel";
+            this.cancelBtn.Text = "Anuluj";
             this.cancelBtn.UseVisualStyleBackColor = true;
             // 
-            // NewDialog
+            // NewFileDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 164);
+            this.ClientSize = new System.Drawing.Size(266, 215);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.label5);
@@ -174,7 +174,7 @@
             this.Controls.Add(this.heightBox);
             this.Controls.Add(this.widthBox);
             this.Name = "NewFileDialog";
-            this.Text = "NewFileDialog";
+            this.Text = "Nowy plik";
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthBox)).EndInit();

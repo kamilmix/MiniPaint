@@ -112,7 +112,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Icons\eraser.bmp" />
+    <None Include="Resources\ellipse.png" />
+    <None Include="Resources\color-picker.png" />
+    <None Include="Resources\text.bmp" />
+    <None Include="Resources\rectangle.bmp" />
+    <None Include="Resources\pointer.bmp" />
+    <None Include="Resources\pencil.bmp" />
+    <None Include="Resources\line.bmp" />
+    <None Include="Resources\fill.bmp" />
+    <None Include="Resources\eraser.bmp" />
+    <None Include="Resources\ellipse.bmp" />
+    <None Include="Resources\brush.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

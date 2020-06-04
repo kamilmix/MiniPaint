@@ -11,8 +11,8 @@ namespace MiniPaint
     public partial class MainWindow : Form
     {
         private string imageFileDirectory = null;
-        private Graphics g;
-        private Graphics gp;
+        private Graphics graphics;
+        private Graphics graphicsPreview;
         private List<Point> temporaryPoints = new List<Point>();
         private Drawing drawing;
         private Size baseSize;
@@ -20,17 +20,21 @@ namespace MiniPaint
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGraphics();
+        }
+
+        private void InitializeGraphics()
+        {
             pictureBoxFrame.Image = new Bitmap(pictureBoxFrame.Width, pictureBoxFrame.Height);
             pictureBoxPreview.Image = new Bitmap(pictureBoxPreview.Width, pictureBoxPreview.Height);
             baseSize = pictureBoxFrame.Size;
             pictureBoxPreview.BackColor = Color.White;
-            g = Graphics.FromImage(pictureBoxFrame.Image);
+            graphics = Graphics.FromImage(pictureBoxFrame.Image);
             font = new Font("Arial", 16);
 
             drawing = new Drawing(pictureBoxFrame.Width, pictureBoxFrame.Height, Color.White);
-            drawing.Draw(g);
+            drawing.Draw(graphics);
             pictureBoxFrame.Refresh();
-
         }
 
         private void PictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -64,7 +68,7 @@ namespace MiniPaint
 
                 Shape shape = null;
                 pictureBoxPreview.Image = new Bitmap(pictureBoxFrame.Image);
-                gp = Graphics.FromImage(pictureBoxPreview.Image);
+                graphicsPreview = Graphics.FromImage(pictureBoxPreview.Image);
 
                 if (radioButtonLine.Checked)
                 {
@@ -92,7 +96,7 @@ namespace MiniPaint
                 }
                 if (shape != null)
                 {
-                    shape.Draw(gp);
+                    shape.Draw(graphicsPreview);
                     pictureBoxPreview.Refresh();
                 }
             }
@@ -136,7 +140,7 @@ namespace MiniPaint
                     buttonLineColor.BackColor = new Bitmap(pictureBoxFrame.Image).GetPixel(e.Location.X, e.Location.Y);
                 }
 
-                drawing.Draw(g);
+                drawing.Draw(graphics);
 
                 pictureBoxFrame.Refresh();
             }
@@ -150,7 +154,6 @@ namespace MiniPaint
 
         private void CopyToClipboard(Point p1, Point p2)
         {
-
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(
                                 Math.Min(p1.X, p2.X),
                                 Math.Min(p1.Y, p2.Y),
@@ -190,15 +193,15 @@ namespace MiniPaint
         #region file options
         private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            drawing.Undo(g);
-            drawing.Draw(gp);
+            drawing.Undo(graphics);
+            drawing.Draw(graphicsPreview);
             pictureBoxPreview.Refresh();
         }
 
         private void RedoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            drawing.Redo(g);
-            drawing.Draw(gp);
+            drawing.Redo(graphics);
+            drawing.Draw(graphicsPreview);
             pictureBoxPreview.Refresh();
         }
 
@@ -211,12 +214,12 @@ namespace MiniPaint
                 baseSize = dialog.ImageSize;
                 pictureBoxFrame.Image = new Bitmap(baseSize.Width, baseSize.Height);
                 pictureBoxPreview.Image = new Bitmap(baseSize.Width, baseSize.Height);
-                g = Graphics.FromImage(pictureBoxFrame.Image);
-                gp = Graphics.FromImage(pictureBoxPreview.Image);
+                graphics = Graphics.FromImage(pictureBoxFrame.Image);
+                graphicsPreview = Graphics.FromImage(pictureBoxPreview.Image);
 
                 drawing = new Drawing(baseSize.Width, baseSize.Height, dialog.ImageBackColor);
-                drawing.Draw(g);
-                drawing.Draw(gp);
+                drawing.Draw(graphics);
+                drawing.Draw(graphicsPreview);
                 pictureBoxFrame.Refresh();
                 pictureBoxPreview.Refresh();
                 Text = "MiniPaint - niezapisane*";
@@ -270,10 +273,6 @@ namespace MiniPaint
             }
         }
 
-        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         #endregion
 
@@ -302,13 +301,12 @@ namespace MiniPaint
 
         private void NewBackground(Image image)
         {
-
             pictureBoxFrame.Image = new Bitmap(image);
             pictureBoxPreview.Image = new Bitmap(image);
 
-            g = Graphics.FromImage(pictureBoxFrame.Image);
+            graphics = Graphics.FromImage(pictureBoxFrame.Image);
             drawing = new Drawing(image);
-            drawing.Draw(g);
+            drawing.Draw(graphics);
             pictureBoxFrame.Refresh();
         }
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -330,19 +328,19 @@ namespace MiniPaint
 
         private void TextBoxText_TextChanged(object sender, EventArgs e)
         {
-            drawing.Undo(gp);
+            drawing.Undo(graphicsPreview);
 
-            Shape figura = new Text(buttonLineColor.BackColor, (int)numericUpDownLineThick.Value, temporaryPoints.First(), textBoxText.Text, font);
-            drawing.Add(figura);
-            gp = Graphics.FromImage(pictureBoxPreview.Image);
-            figura.Draw(gp);
+            Shape shape = new Text(buttonLineColor.BackColor, (int)numericUpDownLineThick.Value, temporaryPoints.First(), textBoxText.Text, font);
+            drawing.Add(shape);
+            graphicsPreview = Graphics.FromImage(pictureBoxPreview.Image);
+            shape.Draw(graphicsPreview);
             pictureBoxPreview.Refresh();
         }
 
         private void ButtonAddText_Click(object sender, EventArgs e)
         {
             drawing.Add(new Text(buttonLineColor.BackColor, (int)numericUpDownLineThick.Value, temporaryPoints.First(), textBoxText.Text, font));
-            drawing.Draw(g);
+            drawing.Draw(graphics);
             pictureBoxFrame.Refresh();
             textBoxText.Text = "";
             groupBoxShape.Enabled = true;
@@ -359,8 +357,8 @@ namespace MiniPaint
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            double skala = trackBar1.Value / 10.0;
-            ChangeScale(skala);
+            double scale = trackBar1.Value / 10.0;
+            ChangeScale(scale);
         }
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -373,29 +371,32 @@ namespace MiniPaint
         {
             CopyToClipboard(temporaryPoints.First(), temporaryPoints.Last());
             drawing.Add(new Rectangle(Color.White, 1, Color.White, temporaryPoints.First(), temporaryPoints.Last()));
-            drawing.Draw(g);
+            drawing.Draw(graphics);
             HideSelect();
         }
         private void HideSelect()
         {
             EnableCopyCutMenuItems(false);
-            pictureBoxPreview.Image = new Bitmap(pictureBoxFrame.Image);
-            gp = Graphics.FromImage(pictureBoxPreview.Image);
-            pictureBoxPreview.Refresh();
+            UpdatePreview();
         }
 
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Clipboard.ContainsImage()) return;
 
-            Image clipboard_image = Clipboard.GetImage();
+            Image clipboardImage = Clipboard.GetImage();
 
-            drawing.Add(new ImageUnscaled(Color.White, 1, temporaryPoints.First(), clipboard_image));
-            drawing.Draw(g);
+            drawing.Add(new ImageUnscaled(Color.White, 1, temporaryPoints.First(), clipboardImage));
+            drawing.Draw(graphics);
+            UpdatePreview();
+        }
+        private void UpdatePreview()
+        {
             pictureBoxPreview.Image = new Bitmap(pictureBoxFrame.Image);
-            gp = Graphics.FromImage(pictureBoxPreview.Image);
+            graphicsPreview = Graphics.FromImage(pictureBoxPreview.Image);
             pictureBoxPreview.Refresh();
         }
+
 
         #region Floodfill
         private void FloodFill(Bitmap bmp, Point pt)
@@ -425,10 +426,14 @@ namespace MiniPaint
             pictureBoxFrame.Image = bmp;
             pictureBoxPreview.Image = bmp;
             drawing = new Drawing(bmp);
-            drawing.Draw(g);
+            drawing.Draw(graphics);
             pictureBoxFrame.Refresh();
             pictureBoxPreview.Refresh();
         }
         #endregion
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
